@@ -35,7 +35,7 @@ Wrapper of [Release GitHub Actions](https://github.com/technote-space/release-gi
           "@bin:commit",
           "@bin:push"
         ],
-        "bin:check": "export ROOT_DIR=$(cd $(dirname $0); pwd) && export $(cat .env | grep -v '^#' | xargs) && bash ./release-script/bin/check.sh",
+        "bin:check": "ls .env && export ROOT_DIR=$(cd $(dirname $0); pwd) && export $(cat .env | grep -v '^#' | xargs) && bash ./release-script/bin/check.sh",
         "bin:setup": "export ROOT_DIR=$(cd $(dirname $0); pwd) && export $(cat .env | grep -v '^#' | xargs) && bash ./release-script/bin/setup.sh",
         "bin:prepare": "export ROOT_DIR=$(cd $(dirname $0); pwd) && export $(cat .env | grep -v '^#' | xargs) && bash ./release-script/bin/prepare.sh",
         "bin:commit": "export ROOT_DIR=$(cd $(dirname $0); pwd) && export $(cat .env | grep -v '^#' | xargs) && bash ./release-script/bin/commit.sh",
