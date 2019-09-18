@@ -55,6 +55,10 @@ Wrapper of [Release GitHub Actions](https://github.com/technote-space/release-gi
    1. `composer bin:release <tag> <token>`
 
 ## Addition
+### `token`
+[personal access token](https://help.github.com/en/articles/creating-a-personal-access-token-for-the-command-line) with the public_repo or repo scope.
+(repo is required for private repositories.)  
+
 ### `.gitignore`
 You should add ignore pattern.
 ```
