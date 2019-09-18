@@ -2,7 +2,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/technote-space/test-release-github-actions/blob/master/LICENSE)
 
-Release GitHub Action locally.  
+Release GitHub Action from local.   
 Wrapper of [Release GitHub Actions](https://github.com/technote-space/release-github-actions).
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
