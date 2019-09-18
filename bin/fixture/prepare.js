@@ -2,6 +2,7 @@
 
 if ( process.argv.length < 5 ) {
 	console.error( "Usage: node prepare <owner> <repo> <tag>" );
+	process.exit(1);
 	return;
 }
 
@@ -11,6 +12,7 @@ const misc = require( "./lib/utils/misc" );
 
 if ( ! misc.isValidTagName( process.argv[ 4 ] ) ) {
 	console.error( "Invalid tag name: " + process.argv[ 4 ] );
+	process.exit(1);
 	return;
 }
 command.prepareCommit( {

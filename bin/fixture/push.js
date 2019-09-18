@@ -2,6 +2,7 @@
 
 if ( process.argv.length < 6 ) {
 	console.error( "Usage: node push <owner> <repo> <tag> <token>" );
+	process.exit(1);
 	return;
 }
 
