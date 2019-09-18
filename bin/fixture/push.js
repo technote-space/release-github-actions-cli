@@ -1,0 +1,35 @@
+"use strict";
+
+if ( process.argv.length < 6 ) {
+	console.error( "Usage: node push <owner> <repo> <tag> <token>" );
+	return;
+}
+
+process.env.INPUT_ACCESS_TOKEN = process.argv[ 5 ];
+const command = require( "./lib/utils/command" );
+
+( async function() {
+	await command.push( {
+		payload: {
+			action: "published",
+			release: {
+				"tag_name": process.argv[ 4 ],
+			},
+		},
+		eventName: "release",
+		ref: "refs/heads/master",
+		sha: "",
+		workflow: "",
+		action: "",
+		actor: "",
+		issue: {
+			owner: "",
+			repo: "",
+			number: 1,
+		},
+		repo: {
+			owner: process.argv[ 2 ],
+			repo: process.argv[ 3 ],
+		},
+	} );
+} )();

@@ -1,0 +1,33 @@
+{
+  "name": "technote-space/release-github-actions-script",
+  "description": "Release GitHub Actions Script",
+  "type": "wordpress-plugin",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Technote",
+      "email": "technote.space@gmail.com",
+      "homepage": "https://technote.space"
+    }
+  ],
+  "scripts": {
+    "bin:download": [
+      "mkdir -p ./release-script/.git",
+      "chmod -R +w ./release-script/.git",
+      "rm -rdf ./release-script",
+      "git clone --depth=1 https://github.com/technote-space/release-github-actions-script.git release-script"
+    ],
+    "bin:release": [
+      "@bin:check",
+      "@bin:setup",
+      "@bin:prepare",
+      "@bin:commit",
+      "@bin:push"
+    ],
+    "bin:check": "export ROOT_DIR=$(cd $(dirname $0); pwd) && export $(cat .env | grep -v '^#' | xargs) && bash ./release-script/bin/check.sh",
+    "bin:setup": "export ROOT_DIR=$(cd $(dirname $0); pwd) && export $(cat .env | grep -v '^#' | xargs) && bash ./release-script/bin/setup.sh",
+    "bin:prepare": "export ROOT_DIR=$(cd $(dirname $0); pwd) && export $(cat .env | grep -v '^#' | xargs) && bash ./release-script/bin/prepare.sh",
+    "bin:commit": "export ROOT_DIR=$(cd $(dirname $0); pwd) && export $(cat .env | grep -v '^#' | xargs) && bash ./release-script/bin/commit.sh",
+    "bin:push": "export ROOT_DIR=$(cd $(dirname $0); pwd) && export $(cat .env | grep -v '^#' | xargs) && bash ./release-script/bin/push.sh"
+  }
+}
