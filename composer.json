@@ -1,7 +1,7 @@
 {
   "name": "technote-space/release-github-actions-script",
   "description": "Release GitHub Actions Script",
-  "type": "wordpress-plugin",
+  "type": "library",
   "license": "MIT",
   "authors": [
     {
