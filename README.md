@@ -10,6 +10,8 @@ Wrapper of [Release GitHub Actions](https://github.com/technote-space/release-gi
 **Table of Contents**
 
 - [Usage](#usage)
+- [Addition](#addition)
+  - [`.gitignore`](#gitignore)
 - [Author](#author)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
