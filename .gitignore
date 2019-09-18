@@ -1,6 +1,3 @@
 /.idea
-/node_modules
-/coverage
-/lib
 /.work
 /release-script
