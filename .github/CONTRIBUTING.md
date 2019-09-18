@@ -2,7 +2,6 @@
 [issues]: https://github.com/technote-space/test-release-github-actions/issues
 [fork]: https://github.com/technote-space/test-release-github-actions/fork
 [pr]: https://github.com/technote-space/test-release-github-actions/compare
-[jest]: https://jestjs.io/
 [code-of-conduct]: CODE_OF_CONDUCT.md
 
 When contributing to this repository, please first discuss the change you wish to make via [issue][issues] with the owners of this repository before making a change. 
@@ -12,9 +11,6 @@ Please note we have a [Contributor Code of Conduct][code-of-conduct], please fol
 ## Submitting a pull request
 
 1. [Fork][fork] and clone the repository
-1. Make sure the tests pass on your machine: `yarn test`, which contains
-   - [`ESLint`][eslint]
-   - [`Jest`][jest]
 1. Create a new branch: `git checkout -b my-branch-name`
 1. Make your change, add tests, and make sure the tests still pass.
 1. Push to your fork and [submit a pull request][pr].
