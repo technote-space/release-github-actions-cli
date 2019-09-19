@@ -19,7 +19,7 @@ const command = require( "./lib/utils/command" );
 				},
 			},
 			eventName: "release",
-			ref: "refs/heads/master",
+			ref: process.argv.length < 7 ? "refs/heads/master" : process.argv[ 6 ],
 			sha: "",
 			workflow: "",
 			action: "",

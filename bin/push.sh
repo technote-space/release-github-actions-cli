@@ -26,4 +26,8 @@ source "${current}"/variables.sh
 
 cd "${WORK_DIR}/${PROGRAM_REPO}"
 
-node push "${TARGET_OWNER}" "${TARGET_REPO}" "${1}" "${2}"
+if [[ $# -lt 3 ]]; then
+  node push "${TARGET_OWNER}" "${TARGET_REPO}" "${1}" "${2}"
+else
+  node push "${TARGET_OWNER}" "${TARGET_REPO}" "${1}" "${2}" "${3}"
+fi
