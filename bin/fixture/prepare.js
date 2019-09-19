@@ -2,7 +2,7 @@
 
 if ( process.argv.length < 5 ) {
 	console.error( "Usage: node prepare <owner> <repo> <tag> [ref]" );
-	process.exit(1);
+	process.exit( 1 );
 	return;
 }
 
@@ -12,29 +12,37 @@ const misc = require( "./lib/utils/misc" );
 
 if ( ! misc.isValidTagName( process.argv[ 4 ] ) ) {
 	console.error( "Invalid tag name: " + process.argv[ 4 ] );
-	process.exit(1);
+	process.exit( 1 );
 	return;
 }
-command.prepareCommit( {
-	payload: {
-		action: "published",
-		release: {
-			"tag_name": process.argv[ 4 ],
-		},
-	},
-	eventName: "release",
-	ref: process.argv.length < 6 ? "refs/heads/master" : process.argv[5],
-	sha: "",
-	workflow: "",
-	action: "",
-	actor: "",
-	issue: {
-		owner: "",
-		repo: "",
-		number: 1,
-	},
-	repo: {
-		owner: process.argv[ 2 ],
-		repo: process.argv[ 3 ],
-	},
-} );
+
+( async function() {
+	try {
+		await command.prepareCommit( {
+			payload: {
+				action: "published",
+				release: {
+					"tag_name": process.argv[ 4 ],
+				},
+			},
+			eventName: "release",
+			ref: process.argv.length < 6 ? "refs/heads/master" : process.argv[ 5 ],
+			sha: "",
+			workflow: "",
+			action: "",
+			actor: "",
+			issue: {
+				owner: "",
+				repo: "",
+				number: 1,
+			},
+			repo: {
+				owner: process.argv[ 2 ],
+				repo: process.argv[ 3 ],
+			},
+		} );
+	} catch ( error ) {
+		console.error( error );
+		process.exit( 1 );
+	}
+} )();
