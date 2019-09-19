@@ -12,7 +12,7 @@ if [[ -z "${TARGET_REPO}" ]]; then
   EXIT=1
 fi
 if [[ $# -lt 2 ]]; then
-	echo "usage: $0 <tag> <token>"
+	echo "usage: $0 <tag> <token> [ref]"
 	EXIT=1
 fi
 
