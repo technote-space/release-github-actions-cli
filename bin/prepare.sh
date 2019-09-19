@@ -26,4 +26,8 @@ source "${current}"/variables.sh
 
 cd "${WORK_DIR}/${PROGRAM_REPO}"
 
-node prepare "${TARGET_OWNER}" "${TARGET_REPO}" "${1}"
+if [[ $# -lt 3 ]]; then
+  node prepare "${TARGET_OWNER}" "${TARGET_REPO}" "${1}"
+else
+  node prepare "${TARGET_OWNER}" "${TARGET_REPO}" "${1}" "${3}"
+fi

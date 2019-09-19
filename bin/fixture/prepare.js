@@ -1,7 +1,7 @@
 "use strict";
 
 if ( process.argv.length < 5 ) {
-	console.error( "Usage: node prepare <owner> <repo> <tag>" );
+	console.error( "Usage: node prepare <owner> <repo> <tag> [ref]" );
 	process.exit(1);
 	return;
 }
@@ -23,7 +23,7 @@ command.prepareCommit( {
 		},
 	},
 	eventName: "release",
-	ref: "refs/heads/master",
+	ref: process.argv.length < 6 ? "refs/heads/master" : process.argv[5],
 	sha: "",
 	workflow: "",
 	action: "",
