@@ -1,12 +1,12 @@
 "use strict";
 
-if ( process.argv.length < 5 ) {
-	console.error( "Usage: node prepare <owner> <repo> <tag> [ref]" );
+if ( process.argv.length < 6 ) {
+	console.error( "Usage: node push <owner> <repo> <tag> <token> [ref]" );
 	process.exit( 1 );
 	return;
 }
 
-process.env.INPUT_ACCESS_TOKEN = "dummy";
+process.env.INPUT_ACCESS_TOKEN = process.argv[ 5 ];
 const command = require( "./lib/utils/command" );
 const misc = require( "./lib/utils/misc" );
 
@@ -26,7 +26,7 @@ if ( ! misc.isValidTagName( process.argv[ 4 ] ) ) {
 				},
 			},
 			eventName: "release",
-			ref: process.argv.length < 6 ? "refs/heads/master" : process.argv[ 5 ],
+			ref: process.argv.length < 7 ? "refs/heads/master" : process.argv[ 6 ],
 			sha: "",
 			workflow: "",
 			action: "",

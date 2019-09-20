@@ -10,8 +10,8 @@ if [[ -z "${TARGET_REPO}" ]]; then
   echo "<TARGET_REPO> is required."
   exit 1
 fi
-if [[ $# -lt 1 ]]; then
-	echo "usage: $0 <tag>"
+if [[ $# -lt 2 ]]; then
+	echo "usage: $0 <tag> <token> [ref]"
 	exit 1
 fi
 
@@ -27,7 +27,7 @@ source "${current}"/variables.sh
 cd "${WORK_DIR}/${PROGRAM_REPO}"
 
 if [[ $# -lt 3 ]]; then
-  node prepare "${TARGET_OWNER}" "${TARGET_REPO}" "${1}"
+  node prepare "${TARGET_OWNER}" "${TARGET_REPO}" "${1}" "${2}"
 else
-  node prepare "${TARGET_OWNER}" "${TARGET_REPO}" "${1}" "${3}"
+  node prepare "${TARGET_OWNER}" "${TARGET_REPO}" "${1}" "${2}" "${3}"
 fi
