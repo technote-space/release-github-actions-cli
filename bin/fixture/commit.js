@@ -1,7 +1,7 @@
-"use strict";
+'use strict';
 
-process.env.INPUT_ACCESS_TOKEN = "dummy";
-const command = require( "./lib/utils/command" );
+process.env.INPUT_GITHUB_TOKEN = 'dummy';
+const command = require( './lib/utils/command' );
 
 ( async function() {
 	try {
