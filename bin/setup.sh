@@ -17,7 +17,7 @@ rm -rdf "${WORK_DIR}"
 mkdir -p "${WORK_DIR}"
 cd "${WORK_DIR}"
 
-git clone "${CLONE_URL}" -b test/v1 --depth=1 "${PROGRAM_REPO}"
+git clone "${CLONE_URL}" -b gh-actions --depth=1 "${PROGRAM_REPO}"
 cd "${PROGRAM_REPO}"
 
 cp "${current}"/fixture/*.js "${WORK_DIR}"/"${PROGRAM_REPO}"/
