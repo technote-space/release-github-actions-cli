@@ -10,8 +10,9 @@ Wrapper of [Release GitHub Actions](https://github.com/technote-space/release-gi
 **Table of Contents**
 
 - [Usage](#usage)
+- [Example](#example)
 - [Addition](#addition)
-  - [`token`](#token)
+  - [`GITHUB_TOKEN`](#github_token)
   - [`.gitignore`](#gitignore)
 - [Author](#author)
 
