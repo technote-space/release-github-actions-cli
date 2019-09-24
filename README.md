@@ -48,15 +48,30 @@ Wrapper of [Release GitHub Actions](https://github.com/technote-space/release-gi
    - Required
      - TARGET_OWNER
      - TARGET_REPO
+     - GITHUB_TOKEN
    - Optional
      - `INPUT_ + [inputs name]`
        - `inputs name`: see inputs in action.yml
 1. Run commands
    1. `composer bin:download`
-   1. `composer bin:release <tag> <token>`
+   1. `composer bin:release <tag> [branch = master]`
+
+## Example
+1. Run command  
+`composer bin:download`
+1. Create `.env`
+    ```dotenv
+    TARGET_OWNER=<repo owner>
+    TARGET_REPO=<repo name>
+    GITHUB_TOKEN=<token>
+    INPUT_TEST_TAG_PREFIX=test/
+    ```
+3. Run command  
+`composer bin:release test/v1.2.3 release/v1.2.3`  
+=> It will be built using the source of the `release/v1.2.3` branch and added the `test/v1`, `test/v1.2`, `test/v1.2.3` tags.
 
 ## Addition
-### `token`
+### `GITHUB_TOKEN`
 [personal access token](https://help.github.com/en/articles/creating-a-personal-access-token-for-the-command-line) with the public_repo or repo scope.
 (repo is required for private repositories.)  
 

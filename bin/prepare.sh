@@ -10,8 +10,12 @@ if [[ -z "${TARGET_REPO}" ]]; then
   echo "<TARGET_REPO> is required."
   exit 1
 fi
-if [[ $# -lt 2 ]]; then
-	echo "usage: $0 <tag> <token> [ref]"
+if [[ -z "${GITHUB_TOKEN}" ]]; then
+  echo "<GITHUB_TOKEN> is required."
+  exit 1
+fi
+if [[ $# -lt 1 ]]; then
+	echo "usage: $0 <tag> [branch]"
 	exit 1
 fi
 
@@ -26,8 +30,4 @@ source "${current}"/variables.sh
 
 cd "${WORK_DIR}/${PROGRAM_REPO}"
 
-if [[ $# -lt 3 ]]; then
-  node prepare "${TARGET_OWNER}" "${TARGET_REPO}" "${1}" "${2}"
-else
-  node prepare "${TARGET_OWNER}" "${TARGET_REPO}" "${1}" "${2}" "${3}"
-fi
+node prepare "${TARGET_OWNER}" "${TARGET_REPO}" "${1}" "${GITHUB_TOKEN}" "${2}"

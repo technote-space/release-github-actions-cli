@@ -1,7 +1,7 @@
 'use strict';
 
-if ( process.argv.length < 6 ) {
-	console.error( 'Usage: node push <owner> <repo> <tag> <token> [ref]' );
+if ( process.argv.length < 7 ) {
+	console.error( 'Usage: node push <owner> <repo> <tag> <token> <ref>' );
 	process.exit( 1 );
 	return;
 }
@@ -27,7 +27,7 @@ if ( ! misc.isValidTagName( process.argv[ 4 ] ) ) {
 				},
 			},
 			eventName: 'release',
-			ref: process.argv.length < 7 ? 'refs/heads/master' : process.argv[ 6 ],
+			ref: process.argv[ 6 ] ? `refs/heads/${ process.argv[ 6 ] }` : 'refs/heads/master',
 			sha: '',
 			workflow: '',
 			action: '',

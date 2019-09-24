@@ -11,8 +11,12 @@ if [[ -z "${TARGET_REPO}" ]]; then
   echo "<TARGET_REPO> is required."
   EXIT=1
 fi
-if [[ $# -lt 2 ]]; then
-	echo "usage: $0 <tag> <token> [ref]"
+if [[ -z "${GITHUB_TOKEN}" ]]; then
+  echo "<GITHUB_TOKEN> is required."
+  EXIT=1
+fi
+if [[ $# -lt 1 ]]; then
+	echo "usage: $0 <tag> [branch]"
 	EXIT=1
 fi
 

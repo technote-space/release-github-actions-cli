@@ -1,7 +1,7 @@
 'use strict';
 
-if ( process.argv.length < 6 ) {
-	console.error( 'Usage: node push <owner> <repo> <tag> <token>' );
+if ( process.argv.length < 7 ) {
+	console.error( 'Usage: node push <owner> <repo> <tag> <token> <ref>' );
 	process.exit( 1 );
 	return;
 }
@@ -20,7 +20,7 @@ const command = require( './lib/utils/command' );
 				},
 			},
 			eventName: 'release',
-			ref: process.argv.length < 7 ? 'refs/heads/master' : process.argv[ 6 ],
+			ref: process.argv[ 6 ] ? `refs/heads/${ process.argv[ 6 ] }` : 'refs/heads/master',
 			sha: '',
 			workflow: '',
 			action: '',
