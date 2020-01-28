@@ -22,7 +22,7 @@ Wrapper of [Release GitHub Actions](https://github.com/technote-space/release-gi
 ## Usage
 1. Install
    ```shell script
-   npm install -g release-github-actions-cli
+   npm install -g @technote-space/release-github-actions-cli
    ```
 1. Setup `.env`
    - Required
