@@ -1,0 +1,7 @@
+#!/usr/bin/env node
+
+require( '../lib' ).execute().catch( error => {
+	console.error( error );
+	// eslint-disable-next-line no-magic-numbers
+	process.exit( 1 );
+} );
