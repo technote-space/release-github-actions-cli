@@ -1,20 +1,20 @@
 {
   "name": "@technote-space/release-github-actions-cli",
-  "version": "0.0.1",
-  "description": "Release GitHub Actions Script",
+  "version": "0.1.0",
+  "description": "Release GitHub Actions Cli",
   "author": "Technote <technote.space@gmail.com> (https://technote.space)",
   "license": "MIT",
   "keywords": [
     "github",
     "github actions"
   ],
-  "homepage": "https://github.com/technote-space/release-github-actions-script",
+  "homepage": "https://github.com/technote-space/release-github-actions-cli",
   "repository": {
     "type": "git",
-    "url": "https://github.com/technote-space/release-github-actions-script.git"
+    "url": "https://github.com/technote-space/release-github-actions-cli.git"
   },
   "bugs": {
-    "url": "https://github.com/technote-space/release-github-actions-script/issues"
+    "url": "https://github.com/technote-space/release-github-actions-cli/issues"
   },
   "files": [
     "lib",
