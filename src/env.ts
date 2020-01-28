@@ -16,11 +16,11 @@ export const setActionEnv = (): void => {
 };
 
 export const setLocalEnv = (name: string): void => {
-	if (!fs.existsSync(path.resolve(process.cwd(), '..', name))) {
+	if (!fs.existsSync(path.resolve(process.cwd(), name))) {
 		throw new Error(`${name} file is required.`);
 	}
 
-	const config = dotenv.parse(fs.readFileSync(path.resolve(process.cwd(), '..', name)));
+	const config = dotenv.parse(fs.readFileSync(path.resolve(process.cwd(), name)));
 	Object.keys(config).forEach(key => process.env[key] = config[key]);
 };
 
