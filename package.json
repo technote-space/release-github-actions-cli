@@ -42,6 +42,7 @@
   },
   "scripts": {
     "build": "yarn install && tsc && yarn install --production",
+    "test": "yarn lint",
     "lint": "eslint 'src/**/*.ts'",
     "lint:fix": "eslint --fix 'src/**/*.ts'",
     "update": "ncu -u && yarn install && yarn upgrade && yarn audit",
