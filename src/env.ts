@@ -1,5 +1,6 @@
 import dotenv from 'dotenv';
 import fs from 'fs';
+import { tmpdir } from 'os';
 import path from 'path';
 import yaml from 'js-yaml';
 
@@ -15,7 +16,11 @@ export const setActionEnv = (): void => {
 };
 
 export const setLocalEnv = (name: string): void => {
-	const config = dotenv.parse(fs.readFileSync(path.resolve(__dirname, '..', name)));
+	if (!fs.existsSync(path.resolve(process.cwd(), '..', name))) {
+		throw new Error(`${name} file is required.`);
+	}
+
+	const config = dotenv.parse(fs.readFileSync(path.resolve(process.cwd(), '..', name)));
 	Object.keys(config).forEach(key => process.env[key] = config[key]);
 };
 
@@ -37,6 +42,7 @@ export const setEnv = (name: string): void => {
 
 	process.env.INPUT_GITHUB_TOKEN = process.env['GITHUB_TOKEN'];
 	process.env.GITHUB_ACTOR       = process.env['TARGET_OWNER'];
-	process.env.GITHUB_WORKSPACE   = path.resolve(__dirname, '..');
+	// eslint-disable-next-line no-magic-numbers
+	process.env.GITHUB_WORKSPACE   = process.env['WORKSPACE'] ?? path.resolve(tmpdir(), 'release-ga', Math.random().toString(36).slice(-8));
 	delete process.env['GITHUB_TOKEN'];
 };

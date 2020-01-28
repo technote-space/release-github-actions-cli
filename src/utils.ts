@@ -2,7 +2,6 @@ import { GitHelper, Logger } from '@technote-space/github-action-helper';
 import * as command from '@technote-space/release-github-actions/lib/utils/command';
 import * as misc from '@technote-space/release-github-actions/lib/utils/misc';
 import { ContextArgs } from './types';
-import path from 'path';
 
 const context = (args: ContextArgs): object => ({
 	payload: {
@@ -30,10 +29,7 @@ const context = (args: ContextArgs): object => ({
 
 export const isValidContext = (args: ContextArgs): boolean => misc.isValidContext(context(args));
 
-export const prepare = async(helper: GitHelper, args: ContextArgs): Promise<void> => {
-	await helper.runCommand(path.resolve(__dirname, '..'), 'rm -rdf .work');
-	await command.prepareCommit(helper, context(args));
-};
+export const prepare = async(helper: GitHelper, args: ContextArgs): Promise<void> => command.prepareCommit(helper, context(args));
 
 export const commit = async(helper: GitHelper): Promise<void> => {
 	await command.config(helper);
