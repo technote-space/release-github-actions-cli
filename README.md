@@ -13,7 +13,6 @@ Wrapper of [Release GitHub Actions](https://github.com/technote-space/release-gi
 - [Example](#example)
 - [Addition](#addition)
   - [`GITHUB_TOKEN`](#github_token)
-  - [`.gitignore`](#gitignore)
 - [Author](#author)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
