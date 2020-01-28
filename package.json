@@ -1,6 +1,6 @@
 {
   "name": "@technote-space/release-github-actions-cli",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Release GitHub Actions Cli",
   "author": "Technote <technote.space@gmail.com> (https://technote.space)",
   "license": "MIT",
@@ -42,6 +42,7 @@
   },
   "scripts": {
     "build": "yarn install && tsc && yarn install --production",
+    "test": "yarn lint",
     "lint": "eslint 'src/**/*.ts'",
     "lint:fix": "eslint --fix 'src/**/*.ts'",
     "update": "ncu -u && yarn install && yarn upgrade && yarn audit",
