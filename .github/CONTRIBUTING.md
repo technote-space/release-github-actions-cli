@@ -1,7 +1,7 @@
 # Contributing
-[issues]: https://github.com/technote-space/test-release-github-actions/issues
-[fork]: https://github.com/technote-space/test-release-github-actions/fork
-[pr]: https://github.com/technote-space/test-release-github-actions/compare
+[issues]: https://github.com/technote-space/release-github-actions-cli/issues
+[fork]: https://github.com/technote-space/release-github-actions-cli/fork
+[pr]: https://github.com/technote-space/release-github-actions-cli/compare
 [eslint]: https://eslint.org/
 [code-of-conduct]: CODE_OF_CONDUCT.md
 
