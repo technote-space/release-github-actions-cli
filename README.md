@@ -1,8 +1,9 @@
 # Release GitHub Actions Cli
 
+[![CI Status](https://github.com/technote-space/release-github-actions-cli/workflows/CI/badge.svg)](https://github.com/technote-space/release-github-actions-cli/actions)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/technote-space/release-github-actions-cli/blob/master/LICENSE)
 
-Release GitHub Action from local.   
+Release GitHub Actions for cli.   
 Wrapper of [Release GitHub Actions](https://github.com/technote-space/release-github-actions).
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
