@@ -12,7 +12,7 @@ const context = (args: ContextArgs): object => ({
 	},
 	eventName: 'release',
 	ref: `refs/heads/${args.branch}`,
-	sha: '',
+	sha: 'FETCH_HEAD',
 	workflow: '',
 	action: '',
 	actor: '',
