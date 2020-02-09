@@ -24,16 +24,16 @@
     "release-ga": "./bin/release-ga"
   },
   "dependencies": {
-    "@technote-space/release-github-actions": "^2.0.11",
-    "commander": "^4.1.0",
+    "@technote-space/release-github-actions": "^3.0.0",
+    "commander": "^4.1.1",
     "dotenv": "^8.2.0",
     "js-yaml": "^3.13.1"
   },
   "devDependencies": {
-    "@technote-space/github-action-test-helper": "^0.1.4",
+    "@technote-space/github-action-test-helper": "^0.2.1",
     "@types/node": "^13.7.0",
-    "@typescript-eslint/eslint-plugin": "^2.18.0",
-    "@typescript-eslint/parser": "^2.18.0",
+    "@typescript-eslint/eslint-plugin": "^2.19.0",
+    "@typescript-eslint/parser": "^2.19.0",
     "eslint": "^6.8.0",
     "typescript": "^3.7.5"
   },
