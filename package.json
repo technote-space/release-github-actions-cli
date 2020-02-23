@@ -1,6 +1,6 @@
 {
   "name": "@technote-space/release-github-actions-cli",
-  "version": "0.1.3",
+  "version": "1.0.0",
   "description": "Release GitHub Actions Cli",
   "author": {
     "name": "Technote",
