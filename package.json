@@ -24,18 +24,18 @@
     "release-ga": "./bin/release-ga"
   },
   "dependencies": {
-    "@technote-space/release-github-actions": "^3.0.2",
+    "@technote-space/release-github-actions": "^3.0.3",
     "commander": "^4.1.1",
     "dotenv": "^8.2.0",
     "js-yaml": "^3.13.1"
   },
   "devDependencies": {
-    "@technote-space/github-action-test-helper": "^0.2.2",
-    "@types/node": "^13.7.1",
-    "@typescript-eslint/eslint-plugin": "^2.19.2",
-    "@typescript-eslint/parser": "^2.19.2",
+    "@technote-space/github-action-test-helper": "^0.2.4",
+    "@types/node": "^13.7.4",
+    "@typescript-eslint/eslint-plugin": "^2.20.0",
+    "@typescript-eslint/parser": "^2.20.0",
     "eslint": "^6.8.0",
-    "typescript": "^3.7.5"
+    "typescript": "^3.8.2"
   },
   "publishConfig": {
     "access": "public"
