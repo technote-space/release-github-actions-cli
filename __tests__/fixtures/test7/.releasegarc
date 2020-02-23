@@ -1,0 +1,7 @@
+{
+  "owner": "owner7",
+  "inputs": {
+    "test-tag-prefix": "test/",
+    "fetch-depth": "5"
+  }
+}

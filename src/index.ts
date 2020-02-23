@@ -1,17 +1,21 @@
 import commander from 'commander';
-import { getContextArgs, getGitHelper, isValidContext, prepare, commit, push } from './utils';
+import { getContextArgs, getGitHelper } from './misc';
+import { isValidContext, prepare, commit, push } from './wrapper';
+import { getConfig } from './config';
 import { setEnv } from './env';
 
 export const execute = async(): Promise<void> => {
 	commander
-		.option('-f, --file [file]', '.env file name.', '.env')
+		.requiredOption('--token <token>', 'token.')
 		.requiredOption('-t, --tag <tag>', 'tag name.')
 		.option('-b, --branch [branch]', 'branch name.', 'master')
+		.option('-w, --workspace [workspace]', 'working directory name.')
+		.option('-c, --config [config]', 'config file directory name.', process.cwd())
 		.parse(process.argv);
 
-	setEnv(commander.file);
-
-	const args = getContextArgs(commander.tag, commander.branch);
+	const config = getConfig(commander.config);
+	const args   = getContextArgs(commander.tag, commander.branch, config);
+	setEnv(config, commander.token, commander.workspace);
 	if (!isValidContext(args)) {
 		console.log('This is not target tag');
 		return;
