@@ -13,7 +13,7 @@ describe('setEnv', () => {
 		setEnv({
 			owner: 'test-owner',
 			repo: 'test-repo',
-		}, 'token');
+		}, 'token', '.');
 
 		expect(process.env).toHaveProperty('INPUT_GITHUB_TOKEN');
 		expect(process.env).toHaveProperty('GITHUB_ACTOR');

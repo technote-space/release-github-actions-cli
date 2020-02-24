@@ -11,6 +11,7 @@ export const execute = async(): Promise<void> => {
 		.option('-b, --branch [branch]', 'branch name', 'master')
 		.option('-w, --workspace [workspace]', 'working directory name', '.')
 		.option('-c, --config [config]', 'config file directory name', process.cwd())
+		.option('-n, --dry-run', 'show what would have been pushed')
 		.parse(process.argv);
 
 	const config = getConfig(commander.config);
@@ -24,5 +25,7 @@ export const execute = async(): Promise<void> => {
 	const helper = getGitHelper();
 	await prepare(helper, args);
 	await commit(helper);
-	await push(helper, args);
+	if (!commander.dryRun) {
+		await push(helper, args);
+	}
 };
