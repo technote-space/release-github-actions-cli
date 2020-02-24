@@ -1,5 +1,6 @@
 import { readFileSync } from 'fs';
 import { resolve } from 'path';
+import { Context } from '@actions/github/lib/context';
 import { GitHelper, Logger } from '@technote-space/github-action-helper';
 import { Config, ContextArgs } from './types';
 
@@ -21,9 +22,9 @@ export const getRepository = (dir: string): { owner: string; repo: string } | ne
 	};
 };
 
-export const getContextArgs = (tagName: string, branch: string, config: Config): ContextArgs => ({...config, tagName, branch});
+export const getContextArgs = (tagName: string, branch: string | undefined, config: Config): ContextArgs => ({...config, tagName, branch});
 
-export const getContext = (args: ContextArgs): object => ({
+export const getContext = (args: ContextArgs): Context => ({
 	payload: {
 		action: 'published',
 		release: {
@@ -31,7 +32,7 @@ export const getContext = (args: ContextArgs): object => ({
 		},
 	},
 	eventName: 'release',
-	ref: `refs/heads/${args.branch}`,
+	ref: `refs/heads/${args.branch || 'master'}`,
 	sha: 'FETCH_HEAD',
 	workflow: '',
 	action: '',
