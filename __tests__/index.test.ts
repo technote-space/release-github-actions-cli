@@ -64,6 +64,7 @@ describe('execute', () => {
 		await execute();
 
 		execCalledWith(mockExec, [
+			`rm -rdf ${cwd}/__tests__/tmp/.work/build ${cwd}/__tests__/tmp/.work/push`,
 			'git init \'.\'',
 			'git remote add origin \'https://test-owner:token@github.com/test-owner/test-repo.git\' > /dev/null 2>&1 || :',
 			'git fetch --no-tags origin \'refs/heads/gh-actions:refs/remotes/origin/gh-actions\' || :',
@@ -105,6 +106,8 @@ describe('execute', () => {
 			'git push --tags \'https://test-owner:token@github.com/test-owner/test-repo.git\' \'gh-actions:refs/heads/gh-actions\' > /dev/null 2>&1 || :',
 		]);
 		stdoutCalledWith(mockStdout, [
+			'[command]rm -rdf <Build Directory> <Push Directory>',
+			'  >> stdout',
 			'::group::Fetching...',
 			'[command]git init \'.\'',
 			'  >> stdout',
@@ -124,7 +127,7 @@ describe('execute', () => {
 			'[command]git checkout --orphan gh-actions',
 			'  >> stdout',
 			'::endgroup::',
-			'::group::Copying current code to build directory...',
+			'::group::Copying current source to build directory...',
 			'[command]rsync -ac -C \'--filter=:- .gitignore\' --exclude \'.git\' --exclude \'.work\' --exclude \'.github\' --delete \'./\' \'<Build Directory>\'',
 			'  >> stdout',
 			'::endgroup::',
@@ -210,6 +213,7 @@ describe('execute', () => {
 		await execute();
 
 		execCalledWith(mockExec, [
+			`rm -rdf ${cwd}/__tests__/tmp/.work/build ${cwd}/__tests__/tmp/.work/push`,
 			'git init \'.\'',
 			'git remote add origin \'https://test-owner:token@github.com/test-owner/test-repo.git\' > /dev/null 2>&1 || :',
 			'git fetch --no-tags origin \'refs/heads/gh-actions:refs/remotes/origin/gh-actions\' || :',
@@ -241,6 +245,8 @@ describe('execute', () => {
 			'git show \'--stat-count=10\' HEAD',
 		]);
 		stdoutCalledWith(mockStdout, [
+			'[command]rm -rdf <Build Directory> <Push Directory>',
+			'  >> stdout',
 			'::group::Fetching...',
 			'[command]git init \'.\'',
 			'  >> stdout',

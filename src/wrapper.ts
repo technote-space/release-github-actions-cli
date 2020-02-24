@@ -8,9 +8,8 @@ import { ContextArgs } from './types';
 
 export const isValidContext = (args: ContextArgs): boolean => misc.isValidContext(getContext(args));
 
-export const prepareFiles = async(helper: GitHelper, args: ContextArgs, context: Context): Promise<void> => {
+export const prepareFiles = async(logger: Logger, com: Command, helper: GitHelper, args: ContextArgs, context: Context): Promise<void> => {
 	const {buildDir, pushDir} = misc.getParams();
-	const logger              = new Logger(command.replaceDirectory);
 	mkdirSync(buildDir, {recursive: true});
 
 	if (args.branch) {
@@ -18,7 +17,6 @@ export const prepareFiles = async(helper: GitHelper, args: ContextArgs, context:
 		await helper.checkout(buildDir, context);
 	} else {
 		logger.startProcess('Copying current source to build directory...');
-		const com = new Command(logger);
 		await com.execAsync({
 			command: 'rsync',
 			args: [
@@ -43,10 +41,15 @@ export const prepareFiles = async(helper: GitHelper, args: ContextArgs, context:
 };
 
 export const prepare = async(helper: GitHelper, args: ContextArgs): Promise<void> => {
-	const context = getContext(args);
+	const context             = getContext(args);
+	const {buildDir, pushDir} = misc.getParams();
+	const logger              = new Logger(command.replaceDirectory);
+	const com                 = new Command(logger);
+
+	await com.execAsync({command: `rm -rdf ${buildDir} ${pushDir}`});
 	await command.clone(helper, context);
 	await command.checkBranch(await helper.getCurrentBranchName(misc.getParams().pushDir), helper);
-	await prepareFiles(helper, args, context);
+	await prepareFiles(logger, com, helper, args, context);
 	await command.createBuildInfoFile(context);
 	await command.copyFiles();
 };
