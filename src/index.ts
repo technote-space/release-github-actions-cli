@@ -9,7 +9,7 @@ export const execute = async(): Promise<void> => {
 		.requiredOption('--token <token>', 'token')
 		.requiredOption('-t, --tag <tag>', 'tag name')
 		.option('-b, --branch [branch]', 'branch name', 'master')
-		.option('-w, --workspace [workspace]', 'working directory name')
+		.option('-w, --workspace [workspace]', 'working directory name', '.')
 		.option('-c, --config [config]', 'config file directory name', process.cwd())
 		.parse(process.argv);
 
