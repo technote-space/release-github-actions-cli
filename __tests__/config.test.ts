@@ -153,4 +153,29 @@ describe('getConfig', () => {
 			'repo': 'test-repo',
 		});
 	});
+
+	it('should get config 5', () => {
+		expect(getConfig(resolve(fixturesDir, 'test12'))).toEqual({
+			'inputs': {
+				'BRANCH_NAME': 'gh-actions',
+				'BUILD_COMMAND': '',
+				'BUILD_COMMAND_TARGET': '',
+				'CLEAN_TARGETS': '.[!.]*,__tests__,src,*.js,*.ts,*.json,*.lock,*.yml,*.yaml',
+				'CLEAN_TEST_TAG': 'false',
+				'COMMIT_EMAIL': '41898282+github-actions[bot]@users.noreply.github.com',
+				'COMMIT_MESSAGE': 'feat: Build for release',
+				'COMMIT_NAME': 'github-actions[bot]',
+				'CREATE_MAJOR_VERSION_TAG': 'true',
+				'CREATE_MINOR_VERSION_TAG': 'true',
+				'CREATE_PATCH_VERSION_TAG': 'true',
+				'FETCH_DEPTH': '3',
+				'ORIGINAL_TAG_PREFIX': '',
+				'OUTPUT_BUILD_INFO_FILENAME': '',
+				'PACKAGE_MANAGER': '',
+				'TEST_TAG_PREFIX': '',
+			},
+			'owner': 'owner12',
+			'repo': 'repo12',
+		});
+	});
 });

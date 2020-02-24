@@ -24,12 +24,22 @@ export const getConfig = (dir: string): Config | never => {
 	const {config = {}} = explorer.search(dir) || {};
 	if (!('owner' in config) || !('repo' in config)) {
 		const {owner, repo} = getRepository(dir);
+		if ('OWNER' in config) {
+			config.owner = config.OWNER;
+			delete config.OWNER;
+		}
+
 		if (!('owner' in config)) {
 			config.owner = owner;
 		}
 
 		if (!('repo' in config)) {
 			config.repo = repo;
+		}
+
+		if ('REPO' in config) {
+			config.repo = config.REPO;
+			delete config.REPO;
 		}
 	}
 

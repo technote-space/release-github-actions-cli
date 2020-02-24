@@ -1,0 +1,10 @@
+{
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/test-owner/test-repo.git"
+  },
+  "releasega": {
+    "OWNER": "owner12",
+    "REPO": "repo12"
+  }
+}
