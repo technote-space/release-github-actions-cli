@@ -43,5 +43,5 @@ export const getConfig = (dir: string): Config | never => {
 		}
 	}
 
-	return {...config, inputs: {...getActionDefaultInputs(), ...normalizeConfigKeys(config.inputs ?? {})}};
+	return {...config, inputs: {...getActionDefaultInputs(), ...normalizeConfigKeys(config.inputs ?? config.INPUTS ?? {})}};
 };
