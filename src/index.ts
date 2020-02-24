@@ -10,11 +10,11 @@ export const execute = async(): Promise<void> => {
 		.requiredOption('-t, --tag <tag>', 'tag name')
 		.option('-b, --branch [branch]', 'branch name', 'master')
 		.option('-w, --workspace [workspace]', 'working directory name', '.')
-		.option('-c, --config [config]', 'config file directory name', process.cwd())
+		.option('-p, --package [package]', 'package file directory name', process.cwd())
 		.option('-n, --dry-run', 'show what would have been pushed')
 		.parse(process.argv);
 
-	const config = getConfig(commander.config);
+	const config = getConfig(commander.package);
 	const args   = getContextArgs(commander.tag, commander.branch, config);
 	setEnv(config, commander.token, commander.workspace);
 	if (!isValidContext(args)) {
