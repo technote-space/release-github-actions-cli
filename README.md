@@ -89,6 +89,7 @@ e.g.
 ### Option
 #### branch
 Branch name to use for build.   
+If this option is not specified, the current source code will be used.
 
 e.g.
 ```
