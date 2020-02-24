@@ -11,6 +11,7 @@ export const normalizeConfigKeys = (config: { [key: string]: string }): { [key: 
 	[normalizeConfigKey(key)]: config[key],
 })));
 
+/* istanbul ignore next */
 const getActionSettingFile = (): string =>
 	existsSync(resolve(__dirname, '../../release-github-actions/action.yml')) ?
 		resolve(__dirname, '../../release-github-actions/action.yml') :
