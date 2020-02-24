@@ -64,16 +64,14 @@ describe('execute', () => {
 		await execute();
 
 		execCalledWith(mockExec, [
+			`rm -rdf ${cwd}/__tests__/tmp/.work/build ${cwd}/__tests__/tmp/.work/push`,
 			'git init \'.\'',
 			'git remote add origin \'https://test-owner:token@github.com/test-owner/test-repo.git\' > /dev/null 2>&1 || :',
 			'git fetch --no-tags origin \'refs/heads/gh-actions:refs/remotes/origin/gh-actions\' || :',
 			'git checkout -b gh-actions origin/gh-actions || :',
 			'git init \'.\'',
 			'git checkout --orphan gh-actions',
-			'git init \'.\'',
-			'git remote add origin \'https://test-owner:token@github.com/test-owner/test-repo.git\' > /dev/null 2>&1 || :',
-			'git fetch --no-tags origin \'refs/heads/master:refs/remotes/origin/master\' || :',
-			'git checkout -qf FETCH_HEAD',
+			`rsync -ac -C '--filter=:- .gitignore' --exclude '.git' --exclude '.work' --exclude '.github' --delete './' '${cwd}/__tests__/tmp/.work/build'`,
 			'rm -rdf node_modules',
 			'npm install --production',
 			`mv -f '${cwd}/__tests__/tmp/.work/build/action.yaml' '${cwd}/__tests__/tmp/.work/push/action.yml' > /dev/null 2>&1 || :`,
@@ -108,6 +106,8 @@ describe('execute', () => {
 			'git push --tags \'https://test-owner:token@github.com/test-owner/test-repo.git\' \'gh-actions:refs/heads/gh-actions\' > /dev/null 2>&1 || :',
 		]);
 		stdoutCalledWith(mockStdout, [
+			'[command]rm -rdf <Build Directory> <Push Directory>',
+			'  >> stdout',
 			'::group::Fetching...',
 			'[command]git init \'.\'',
 			'  >> stdout',
@@ -127,13 +127,8 @@ describe('execute', () => {
 			'[command]git checkout --orphan gh-actions',
 			'  >> stdout',
 			'::endgroup::',
-			'::group::Cloning the remote repo for build...',
-			'[command]git init \'.\'',
-			'  >> stdout',
-			'[command]git remote add origin',
-			'[command]git fetch --no-tags origin \'refs/heads/master:refs/remotes/origin/master\'',
-			'  >> stdout',
-			'[command]git checkout -qf FETCH_HEAD',
+			'::group::Copying current source to build directory...',
+			'[command]rsync -ac -C \'--filter=:- .gitignore\' --exclude \'.git\' --exclude \'.work\' --exclude \'.github\' --delete \'./\' \'<Build Directory>\'',
 			'  >> stdout',
 			'::endgroup::',
 			'::group::Running build for release...',
@@ -206,6 +201,8 @@ describe('execute', () => {
 			'token',
 			'-t',
 			'test/v1.2.3',
+			'-b',
+			'release/v1.2.3',
 			'-p',
 			'__tests__/fixtures/test11',
 			'-w',
@@ -216,6 +213,7 @@ describe('execute', () => {
 		await execute();
 
 		execCalledWith(mockExec, [
+			`rm -rdf ${cwd}/__tests__/tmp/.work/build ${cwd}/__tests__/tmp/.work/push`,
 			'git init \'.\'',
 			'git remote add origin \'https://test-owner:token@github.com/test-owner/test-repo.git\' > /dev/null 2>&1 || :',
 			'git fetch --no-tags origin \'refs/heads/gh-actions:refs/remotes/origin/gh-actions\' || :',
@@ -224,7 +222,7 @@ describe('execute', () => {
 			'git checkout --orphan gh-actions',
 			'git init \'.\'',
 			'git remote add origin \'https://test-owner:token@github.com/test-owner/test-repo.git\' > /dev/null 2>&1 || :',
-			'git fetch --no-tags origin \'refs/heads/master:refs/remotes/origin/master\' || :',
+			'git fetch --no-tags origin \'refs/heads/release/v1.2.3:refs/remotes/origin/release/v1.2.3\' || :',
 			'git checkout -qf FETCH_HEAD',
 			'rm -rdf node_modules',
 			'npm install --production',
@@ -247,6 +245,8 @@ describe('execute', () => {
 			'git show \'--stat-count=10\' HEAD',
 		]);
 		stdoutCalledWith(mockStdout, [
+			'[command]rm -rdf <Build Directory> <Push Directory>',
+			'  >> stdout',
 			'::group::Fetching...',
 			'[command]git init \'.\'',
 			'  >> stdout',
@@ -270,7 +270,7 @@ describe('execute', () => {
 			'[command]git init \'.\'',
 			'  >> stdout',
 			'[command]git remote add origin',
-			'[command]git fetch --no-tags origin \'refs/heads/master:refs/remotes/origin/master\'',
+			'[command]git fetch --no-tags origin \'refs/heads/release/v1.2.3:refs/remotes/origin/release/v1.2.3\'',
 			'  >> stdout',
 			'[command]git checkout -qf FETCH_HEAD',
 			'  >> stdout',

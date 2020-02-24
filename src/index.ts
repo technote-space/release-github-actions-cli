@@ -8,7 +8,7 @@ export const execute = async(): Promise<void> => {
 	commander
 		.requiredOption('--token <token>', 'token')
 		.requiredOption('-t, --tag <tag>', 'tag name')
-		.option('-b, --branch [branch]', 'branch name', 'master')
+		.option('-b, --branch [branch]', 'branch name')
 		.option('-w, --workspace [workspace]', 'working directory name', '.')
 		.option('-p, --package [package]', 'package file directory name', process.cwd())
 		.option('-n, --dry-run', 'show what would have been pushed')

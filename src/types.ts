@@ -2,7 +2,7 @@ export type ContextArgs = Readonly<{
 	owner: string;
 	repo: string;
 	tagName: string;
-	branch: string;
+	branch?: string;
 }>;
 
 export type Config = Readonly<{
