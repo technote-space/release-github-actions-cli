@@ -16,9 +16,15 @@ Wrapper of [Release GitHub Actions](https://github.com/technote-space/release-gi
 <summary>Details</summary>
 
 - [Usage](#usage)
-- [Example](#example)
-- [Addition](#addition)
-  - [`GITHUB_TOKEN`](#github_token)
+  - [For global](#for-global)
+  - [For package](#for-package)
+- [Args](#args)
+  - [Required](#required)
+  - [Option](#option)
+- [Settings](#settings)
+  - [OWNER](#owner)
+  - [REPO](#repo)
+  - [INPUTS](#inputs)
 - [Author](#author)
 
 </details>
