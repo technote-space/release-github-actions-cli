@@ -1,17 +1,22 @@
 import commander from 'commander';
-import { getContextArgs, getGitHelper, isValidContext, prepare, commit, push } from './utils';
+import { getContextArgs, getGitHelper } from './misc';
+import { isValidContext, prepare, commit, push } from './wrapper';
+import { getConfig } from './config';
 import { setEnv } from './env';
 
 export const execute = async(): Promise<void> => {
 	commander
-		.option('-f, --file [file]', '.env file name.', '.env')
-		.requiredOption('-t, --tag <tag>', 'tag name.')
-		.option('-b, --branch [branch]', 'branch name.', 'master')
+		.requiredOption('--token <token>', 'token')
+		.requiredOption('-t, --tag <tag>', 'tag name')
+		.option('-b, --branch [branch]', 'branch name', 'master')
+		.option('-w, --workspace [workspace]', 'working directory name', '.')
+		.option('-p, --package [package]', 'package file directory name', process.cwd())
+		.option('-n, --dry-run', 'show what would have been pushed')
 		.parse(process.argv);
 
-	setEnv(commander.file);
-
-	const args = getContextArgs(commander.tag, commander.branch);
+	const config = getConfig(commander.package);
+	const args   = getContextArgs(commander.tag, commander.branch, config);
+	setEnv(config, commander.token, commander.workspace);
 	if (!isValidContext(args)) {
 		console.log('This is not target tag');
 		return;
@@ -20,5 +25,7 @@ export const execute = async(): Promise<void> => {
 	const helper = getGitHelper();
 	await prepare(helper, args);
 	await commit(helper);
-	await push(helper, args);
+	if (!commander.dryRun) {
+		await push(helper, args);
+	}
 };

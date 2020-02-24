@@ -7,8 +7,8 @@
 
 *Read this in other languages: [English](README.md), [日本語](README.ja.md).*
 
-CLI tool of `Release GitHub Actions`.  
-Wrapper of [Release GitHub Actions](https://github.com/technote-space/release-github-actions).
+`Release GitHub Actions` の CLIツール  
+[Release GitHub Actions](https://github.com/technote-space/release-github-actions) をラップしたものです。
 
 ## Table of Contents
 
@@ -17,13 +17,13 @@ Wrapper of [Release GitHub Actions](https://github.com/technote-space/release-gi
 <details>
 <summary>Details</summary>
 
-- [Usage](#usage)
-  - [For global](#for-global)
-  - [For package](#for-package)
+- [使用方法](#%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95)
+  - [グローバルで使用](#%E3%82%B0%E3%83%AD%E3%83%BC%E3%83%90%E3%83%AB%E3%81%A7%E4%BD%BF%E7%94%A8)
+  - [package で使用](#package-%E3%81%A7%E4%BD%BF%E7%94%A8)
 - [Args](#args)
-  - [Required](#required)
-  - [Option](#option)
-- [Settings](#settings)
+  - [必須](#%E5%BF%85%E9%A0%88)
+  - [オプション](#%E3%82%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3)
+- [設定](#%E8%A8%AD%E5%AE%9A)
   - [OWNER](#owner)
   - [REPO](#repo)
   - [INPUTS](#inputs)
@@ -32,44 +32,44 @@ Wrapper of [Release GitHub Actions](https://github.com/technote-space/release-gi
 </details>
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-## Usage
-### For global
-1. Install
+## 使用方法
+### グローバルで使用
+1. インストール
     ```shell script
     yarn global add @technote-space/release-github-actions-cli
     ```
-1. Run command
+1. コマンド実行
     ```shell script
     release-ga --token <token> -p <package dir> -t <tag>
     ```
 
-    show help
+    ヘルプ表示
     
     ```shell script
     release-ga -h
     ```
-### For package
-1. Install
+### package で使用
+1. インストール
     ```shell script
     yarn add --dev @technote-space/release-github-actions-cli
     ```
-1. Run command
+1. コマンド実行
     ```shell script
     yarn release-ga --token <token> -t <tag>
     ```
 
-    show help
+    ヘルプ表示
     
     ```shell script
     yarn release-ga -h
     ```
 
 ## Args
-### Required
+### 必須
 #### token
 [personal access token](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line)
 
-e.g.
+例：
 ```
 --token 1234567890
 ```
@@ -77,7 +77,7 @@ e.g.
 #### tag
 [detail](https://github.com/technote-space/release-github-actions#condition)
 
-e.g. 
+例： 
 ```
 --tag v1.2.3
 ```
@@ -86,11 +86,11 @@ e.g.
 -t v1.2.3
 ```
 
-### Option
+### オプション
 #### branch
-Branch name to use for build.   
+ビルドに使用するブランチ名
 
-e.g.
+例：
 ```
 --branch release/v1.2.3
 ```
@@ -100,9 +100,9 @@ e.g.
 ```
 
 #### dry run
-Whether not to push.
+プッシュしないかどうか
 
-e.g.
+例：
 ```
 --dry-run
 ```
@@ -112,9 +112,9 @@ e.g.
 ```
 
 #### package file directory
-Directory where `package.json` file exists.
+`package.json` ファイルのあるディレクトリ
 
-e.g.
+例：
 ```
 --package /tmp/test-repo
 ```
@@ -123,10 +123,10 @@ e.g.
 -p /tmp/test-repo
 ```
 
-## Settings
-`Release GitHub Actions CLI` can be configured using `.releasegarc`, `.releasegarc.json`, `.releasegarc.js`, `.releasega.config.js` or `releasega` property in `package.json`.
+## 設定
+`Release GitHub Actions CLI` は `.releasegarc`, `.releasegarc.json`, `.releasegarc.js`, `.releasega.config.js` または `package.json` の `releasega` プロパティで設定できます。
 
-e.g. `.releasegarc`
+例： `.releasegarc`
 ```json
 {
   "owner": "test-owner",
@@ -138,7 +138,7 @@ e.g. `.releasegarc`
 }
 ```
 
-e.g. `package.json`
+例： `package.json`
 ```json
 {
   "name": "test",
@@ -159,18 +159,18 @@ e.g. `package.json`
 ```
 
 ### OWNER
-Use this option to specify the owner.  
-default: detect from url in `package.json`
+Owner を指定するために使用します。  
+default: `package.json` 内のURLから検出します
 
 ### REPO
-Use this option to specify the repo.  
-default: detect from url in `package.json`
+Repo を指定するために使用します。  
+default: `package.json` 内のURLから検出します。
 
 ### INPUTS
-Use this option to set action inputs.  
+アクションの inputs を設定します。  
 [action.yml](https://github.com/technote-space/release-github-actions/blob/master/action.yml)  
 
-e.g.
+例：
 ```json
 {
   "inputs": {
