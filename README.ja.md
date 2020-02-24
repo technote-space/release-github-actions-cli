@@ -1,11 +1,13 @@
-# Release GitHub Actions Cli
+# Release GitHub Actions CLI
 
 [![CI Status](https://github.com/technote-space/release-github-actions-cli/workflows/CI/badge.svg)](https://github.com/technote-space/release-github-actions-cli/actions)
 [![codecov](https://codecov.io/gh/technote-space/release-github-actions-cli/branch/master/graph/badge.svg)](https://codecov.io/gh/technote-space/release-github-actions-cli)
 [![CodeFactor](https://www.codefactor.io/repository/github/technote-space/release-github-actions-cli/badge)](https://www.codefactor.io/repository/github/technote-space/release-github-actions-cli)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/technote-space/release-github-actions-cli/blob/master/LICENSE)
 
-`Release GitHub Actions` のCLIツール  
+*Read this in other languages: [English](README.md), [日本語](README.ja.md).*
+
+`Release GitHub Actions` の CLIツール  
 [Release GitHub Actions](https://github.com/technote-space/release-github-actions) をラップしたものです。
 
 ## Table of Contents
@@ -122,7 +124,7 @@
 ```
 
 ## 設定
-`Release GitHub Actions Cli` は `.releasegarc`, `.releasegarc.json`, `.releasegarc.js`, `.releasega.config.js` または `package.json` の `releasega` プロパティで設定できます。
+`Release GitHub Actions CLI` は `.releasegarc`, `.releasegarc.json`, `.releasegarc.js`, `.releasega.config.js` または `package.json` の `releasega` プロパティで設定できます。
 
 例： `.releasegarc`
 ```json

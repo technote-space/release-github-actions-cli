@@ -1,11 +1,13 @@
-# Release GitHub Actions Cli
+# Release GitHub Actions CLI
 
 [![CI Status](https://github.com/technote-space/release-github-actions-cli/workflows/CI/badge.svg)](https://github.com/technote-space/release-github-actions-cli/actions)
 [![codecov](https://codecov.io/gh/technote-space/release-github-actions-cli/branch/master/graph/badge.svg)](https://codecov.io/gh/technote-space/release-github-actions-cli)
 [![CodeFactor](https://www.codefactor.io/repository/github/technote-space/release-github-actions-cli/badge)](https://www.codefactor.io/repository/github/technote-space/release-github-actions-cli)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/technote-space/release-github-actions-cli/blob/master/LICENSE)
 
-Cli tool of `Release GitHub Actions`.  
+*Read this in other languages: [English](README.md), [日本語](README.ja.md).*
+
+CLI tool of `Release GitHub Actions`.  
 Wrapper of [Release GitHub Actions](https://github.com/technote-space/release-github-actions).
 
 ## Table of Contents
@@ -122,7 +124,7 @@ e.g.
 ```
 
 ## Settings
-`Release GitHub Actions Cli` can be configured using `.releasegarc`, `.releasegarc.json`, `.releasegarc.js`, `.releasega.config.js` or `releasega` property in `package.json`.
+`Release GitHub Actions CLI` can be configured using `.releasegarc`, `.releasegarc.json`, `.releasegarc.js`, `.releasega.config.js` or `releasega` property in `package.json`.
 
 e.g. `.releasegarc`
 ```json
