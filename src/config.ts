@@ -12,10 +12,9 @@ export const normalizeConfigKeys = (config: { [key: string]: string }): { [key: 
 })));
 
 /* istanbul ignore next */
-const getActionSettingFile = (): string =>
-	existsSync(resolve(__dirname, '../../release-github-actions/action.yml')) ?
-		resolve(__dirname, '../../release-github-actions/action.yml') :
-		resolve(__dirname, '../node_modules/@technote-space/release-github-actions/action.yml');
+const getActionSettingFile = (): string => existsSync(resolve(__dirname, '../../release-github-actions/action.yml')) ?
+	resolve(__dirname, '../../release-github-actions/action.yml') :
+	resolve(__dirname, '../node_modules/@technote-space/release-github-actions/action.yml');
 
 export const getActionDefaultInputs = (): { [key: string]: string } => {
 	const actionSetting = yaml.safeLoad(readFileSync(getActionSettingFile(), 'utf8'));
@@ -35,17 +34,17 @@ export const getConfig = (dir: string): Config | never => {
 			delete config.OWNER;
 		}
 
+		if ('REPO' in config) {
+			config.repo = config.REPO;
+			delete config.REPO;
+		}
+
 		if (!('owner' in config)) {
 			config.owner = owner;
 		}
 
 		if (!('repo' in config)) {
 			config.repo = repo;
-		}
-
-		if ('REPO' in config) {
-			config.repo = config.REPO;
-			delete config.REPO;
 		}
 	}
 
