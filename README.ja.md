@@ -5,8 +5,8 @@
 [![CodeFactor](https://www.codefactor.io/repository/github/technote-space/release-github-actions-cli/badge)](https://www.codefactor.io/repository/github/technote-space/release-github-actions-cli)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/technote-space/release-github-actions-cli/blob/master/LICENSE)
 
-Cli tool of `Release GitHub Actions`.  
-Wrapper of [Release GitHub Actions](https://github.com/technote-space/release-github-actions).
+`Release GitHub Actions` のCLIツール  
+[Release GitHub Actions](https://github.com/technote-space/release-github-actions) をラップしたものです。
 
 ## Table of Contents
 
@@ -24,44 +24,44 @@ Wrapper of [Release GitHub Actions](https://github.com/technote-space/release-gi
 </details>
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-## Usage
-### For global
-1. Install
+## 使用方法
+### グローバルで使用
+1. インストール
     ```shell script
     yarn global add @technote-space/release-github-actions-cli
     ```
-1. Run command
+1. コマンド実行
     ```shell script
     release-ga --token <token> -p <package dir> -t <tag>
     ```
 
-    show help
+    ヘルプ表示
     
     ```shell script
     release-ga -h
     ```
-### For package
-1. Install
+### package で使用
+1. インストール
     ```shell script
     yarn add --dev @technote-space/release-github-actions-cli
     ```
-1. Run command
+1. コマンド実行
     ```shell script
     yarn release-ga --token <token> -t <tag>
     ```
 
-    show help
+    ヘルプ表示
     
     ```shell script
     yarn release-ga -h
     ```
 
 ## Args
-### Required
+### 必須
 #### token
 [personal access token](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line)
 
-e.g.
+例：
 ```
 --token 1234567890
 ```
@@ -69,7 +69,7 @@ e.g.
 #### tag
 [detail](https://github.com/technote-space/release-github-actions#condition)
 
-e.g. 
+例： 
 ```
 --tag v1.2.3
 ```
@@ -78,11 +78,11 @@ e.g.
 -t v1.2.3
 ```
 
-### Option
+### オプション
 #### branch
-Branch name to use for build.   
+ビルドに使用するブランチ名
 
-e.g.
+例：
 ```
 --branch release/v1.2.3
 ```
@@ -92,9 +92,9 @@ e.g.
 ```
 
 #### dry run
-Whether not to push.
+プッシュしないかどうか
 
-e.g.
+例：
 ```
 --dry-run
 ```
@@ -104,9 +104,9 @@ e.g.
 ```
 
 #### package file directory
-Directory where `package.json` file exists.
+`package.json` ファイルのあるディレクトリ
 
-e.g.
+例：
 ```
 --package /tmp/test-repo
 ```
@@ -115,10 +115,10 @@ e.g.
 -p /tmp/test-repo
 ```
 
-## Settings
-`Release GitHub Actions Cli` can be configured using `.releasegarc`, `.releasegarc.json`, `.releasegarc.js`, `.releasega.config.js` or `releasega` property in `package.json`.
+## 設定
+`Release GitHub Actions Cli` は `.releasegarc`, `.releasegarc.json`, `.releasegarc.js`, `.releasega.config.js` または `package.json` の `releasega` プロパティで設定できます。
 
-e.g. `.releasegarc`
+例： `.releasegarc`
 ```json
 {
   "owner": "test-owner",
@@ -130,7 +130,7 @@ e.g. `.releasegarc`
 }
 ```
 
-e.g. `package.json`
+例： `package.json`
 ```json
 {
   "name": "test",
@@ -151,18 +151,18 @@ e.g. `package.json`
 ```
 
 ### OWNER
-Use this option to specify the owner.  
-default: detect from url in `package.json`
+Owner を指定するために使用します。  
+default: `package.json` 内のURLから検出します
 
 ### REPO
-Use this option to specify the repo.  
-default: detect from url in `package.json`
+Repo を指定するために使用します。  
+default: `package.json` 内のURLから検出します。
 
 ### INPUTS
-Use this option to set action inputs.  
+アクションの inputs を設定します。  
 [action.yml](https://github.com/technote-space/release-github-actions/blob/master/action.yml)  
 
-e.g.
+例：
 ```json
 {
   "inputs": {
