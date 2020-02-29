@@ -1,6 +1,9 @@
 /* eslint-disable no-magic-numbers */
+import { resolve } from 'path';
 import { testEnv } from '@technote-space/github-action-test-helper';
-import { setEnv } from '../src/env';
+import { setEnv, loadTokenFromEnv } from '../src/env';
+
+const fixturesDir = resolve(__dirname, 'fixtures');
 
 describe('setEnv', () => {
 	testEnv();
@@ -41,5 +44,18 @@ describe('setEnv', () => {
 		expect(process.env).toHaveProperty('GITHUB_WORKSPACE');
 		expect(process.env).toHaveProperty('INPUT_COMMIT_NAME');
 		expect(process.env).toHaveProperty('INPUT_FETCH_DEPTH');
+	});
+});
+
+describe('loadTokenFromEnv', () => {
+	testEnv();
+
+	it('should load token', () => {
+		expect(loadTokenFromEnv(resolve(fixturesDir, 'test1'))).toBe('test-token1');
+		expect(loadTokenFromEnv(resolve(fixturesDir, 'test2'))).toBe('test-token2');
+	});
+
+	it('should not load token', () => {
+		expect(loadTokenFromEnv(resolve(fixturesDir, 'test3'))).toBeUndefined();
 	});
 });
