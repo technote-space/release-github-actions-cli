@@ -24,6 +24,17 @@ describe('execute', () => {
 		process.argv = saveArgv;
 	});
 
+	it('should throw error', async() => {
+		process.argv = [
+			'node',
+			'index.js',
+			'-t',
+			'test/v1.2.3',
+		];
+
+		await expect(execute()).rejects.toThrow('<token> is required.');
+	});
+
 	it('should do nothing', async() => {
 		const mockExec   = spyOnExec();
 		const mockStdout = spyOnStdout();
