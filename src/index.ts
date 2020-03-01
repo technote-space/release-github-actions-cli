@@ -22,7 +22,7 @@ export const execute = async(): Promise<void> => {
 
 	const config = getConfig(commander.package);
 	const args   = getContextArgs(commander.tag, commander.branch, config);
-	setEnv(config, commander.token, commander.workspace);
+	setEnv(config, token, commander.workspace);
 	if (!isValidContext(args)) {
 		console.log('This is not target tag');
 		return;
