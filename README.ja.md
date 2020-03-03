@@ -86,6 +86,8 @@
 -t v1.2.3
 ```
 
+[`test`](#test) オプションを設定している場合は不要です。
+
 ### オプション
 #### branch
 ビルドに使用するブランチ名  
@@ -123,6 +125,12 @@
 ```
 -p /tmp/test-repo
 ```
+
+#### test
+テストモード
+
+タグ名は最新のタグから決まります。  
+テスト用タグプリフィックスに `test/` が設定されます。
 
 ## 設定
 `Release GitHub Actions CLI` は `.releasegarc`, `.releasegarc.json`, `.releasegarc.js`, `.releasega.config.js` または `package.json` の `releasega` プロパティで設定できます。
