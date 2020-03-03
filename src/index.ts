@@ -6,13 +6,14 @@ import { setEnv, loadTokenFromEnv } from './env';
 
 export const execute = async(): Promise<void> => {
 	commander
-		.requiredOption('-t, --tag <tag>', 'tag name')
+		.option('-t, --tag <tag>', 'tag name')
 		.option('--token <token>', 'token')
 		.option('-b, --branch [branch]', 'branch name')
 		.option('-w, --workspace [workspace]', 'working directory name', '.')
 		.option('-p, --package [package]', 'package file directory name', process.cwd())
 		.option('-e, --env [env]', 'env file name', '.env')
 		.option('-n, --dry-run', 'show what would have been pushed')
+		.option('--test', 'whether it is test')
 		.parse(process.argv);
 
 	const token = commander.token || loadTokenFromEnv(commander.package);
@@ -20,15 +21,17 @@ export const execute = async(): Promise<void> => {
 		throw new Error('<token> is required.');
 	}
 
-	const config = getConfig(commander.package);
-	const args   = getContextArgs(commander.tag, commander.branch, config);
-	setEnv(config, token, commander.workspace);
+	process.env.INPUT_GITHUB_TOKEN = token;
+	const helper                   = getGitHelper();
+	const config                   = getConfig(commander.package, commander.test);
+	const args                     = await getContextArgs(helper, commander.tag, commander.branch, commander.package, config);
+
+	setEnv(config, commander.workspace);
 	if (!isValidContext(args)) {
 		console.log('This is not target tag');
 		return;
 	}
 
-	const helper = getGitHelper();
 	await prepare(helper, args);
 	await commit(helper);
 	if (!commander.dryRun) {
