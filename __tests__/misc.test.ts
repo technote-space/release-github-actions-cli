@@ -62,10 +62,19 @@ describe('getContext', () => {
 describe('getContextArgs', () => {
 	testEnv();
 
-	it('should throw', async() => {
+	it('should throw 1', async() => {
 		process.env.INPUT_GITHUB_TOKEN = 'token';
 
-		await expect(getContextArgs(getGitHelper(), undefined, 'release/v1.2.3', '', {
+		await expect(getContextArgs(getGitHelper(), undefined, 'release/v1.2.3', '', undefined, {
+			owner: 'test-owner',
+			repo: 'test-repo',
+		})).rejects.toThrow('<tag> is required.');
+	});
+
+	it('should throw 2', async() => {
+		process.env.INPUT_GITHUB_TOKEN = 'token';
+
+		await expect(getContextArgs(getGitHelper(), undefined, 'release/v1.2.3', '', true, {
 			owner: 'test-owner',
 			repo: 'test-repo',
 		})).rejects.toThrow('<tag> is required.');
@@ -74,7 +83,7 @@ describe('getContextArgs', () => {
 	it('should get context args 1', async() => {
 		process.env.INPUT_GITHUB_TOKEN = 'token';
 
-		expect(await getContextArgs(getGitHelper(), 'v1.2.3', 'release/v1.2.3', '', {
+		expect(await getContextArgs(getGitHelper(), 'v1.2.3', 'release/v1.2.3', '', false, {
 			owner: 'test-owner',
 			repo: 'test-repo',
 		})).toEqual({
@@ -97,7 +106,7 @@ describe('getContextArgs', () => {
 			},
 		});
 
-		expect(await getContextArgs(getGitHelper(), '', 'release/v1.2.3', '', {
+		expect(await getContextArgs(getGitHelper(), '', 'release/v1.2.3', '', true, {
 			owner: 'test-owner',
 			repo: 'test-repo',
 			inputs: {

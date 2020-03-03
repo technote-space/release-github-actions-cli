@@ -22,9 +22,9 @@ export const getRepository = (dir: string): { owner: string; repo: string } | ne
 	};
 };
 
-export const getContextArgs = async(helper: GitHelper, tagName: string | undefined, branch: string | undefined, dir: string, config: Config): Promise<ContextArgs> => {
+export const getContextArgs = async(helper: GitHelper, tagName: string | undefined, branch: string | undefined, dir: string, isTest: boolean | undefined, config: Config): Promise<ContextArgs> => {
 	if (!tagName) {
-		if (!config.inputs?.TEST_TAG_PREFIX) {
+		if (!isTest || !config.inputs?.TEST_TAG_PREFIX) {
 			throw new Error('<tag> is required.');
 		}
 
