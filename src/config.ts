@@ -24,7 +24,7 @@ export const getActionDefaultInputs = (): { [key: string]: string } => {
 	})));
 };
 
-export const getConfig = (dir: string): Config | never => {
+export const getConfig = (dir: string, isTest: boolean | undefined): Config | never => {
 	const explorer      = cosmiconfigSync('releasega');
 	const {config = {}} = explorer.search(dir) || {};
 	if (!('owner' in config) || !('repo' in config)) {
@@ -48,5 +48,5 @@ export const getConfig = (dir: string): Config | never => {
 		}
 	}
 
-	return {...config, inputs: {...getActionDefaultInputs(), ...normalizeConfigKeys(config.inputs ?? config.INPUTS ?? {})}};
+	return {...config, inputs: {...getActionDefaultInputs(), ...{TEST_TAG_PREFIX: isTest ? 'test/' : ''}, ...normalizeConfigKeys(config.inputs ?? config.INPUTS ?? {})}};
 };

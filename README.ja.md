@@ -74,6 +74,12 @@
 --token 1234567890
 ```
 
+`token` が書かれた `.env` ファイルを用意している場合は不要です。  
+例：
+```dotenv
+token=1234567890
+```
+
 #### tag
 [detail](https://github.com/technote-space/release-github-actions#condition)
 
@@ -85,6 +91,8 @@
 ```
 -t v1.2.3
 ```
+
+[`test`](#test) オプションを設定している場合は不要です。
 
 ### オプション
 #### branch
@@ -123,6 +131,12 @@
 ```
 -p /tmp/test-repo
 ```
+
+#### test
+テストモード
+
+タグ名は最新のタグから決まります。  
+テスト用タグプリフィックスに `test/` が設定されます。
 
 ## 設定
 `Release GitHub Actions CLI` は `.releasegarc`, `.releasegarc.json`, `.releasegarc.js`, `.releasega.config.js` または `package.json` の `releasega` プロパティで設定できます。

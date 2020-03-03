@@ -22,7 +22,17 @@ export const getRepository = (dir: string): { owner: string; repo: string } | ne
 	};
 };
 
-export const getContextArgs = (tagName: string, branch: string | undefined, config: Config): ContextArgs => ({...config, tagName, branch});
+export const getContextArgs = async(helper: GitHelper, tagName: string | undefined, branch: string | undefined, dir: string, config: Config): Promise<ContextArgs> => {
+	if (!tagName) {
+		if (!config.inputs?.TEST_TAG_PREFIX) {
+			throw new Error('<tag> is required.');
+		}
+
+		return {...config, tagName: config.inputs.TEST_TAG_PREFIX + await helper.getNewPatchVersion(dir), branch};
+	}
+
+	return {...config, tagName, branch};
+};
 
 export const getContext = (args: ContextArgs): Context => ({
 	payload: {

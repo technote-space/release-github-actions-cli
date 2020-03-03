@@ -6,15 +6,23 @@ import {
 	testChildProcess,
 	spyOnExec,
 	execCalledWith,
-	testFs,
+	testFs, setChildProcessParams,
 } from '@technote-space/github-action-test-helper';
 import { Logger } from '@technote-space/github-action-helper';
+import commander from 'commander';
 import { execute } from '../src';
 
-testFs(false);
-const saveArgv = process.argv;
+const setExists = testFs(false);
+const saveArgv  = process.argv;
 beforeEach(() => {
 	Logger.resetForTesting();
+	delete commander.token;
+	delete commander.package;
+	delete commander.test;
+	delete commander.tag;
+	delete commander.branch;
+	delete commander.workspace;
+	delete commander.dryRun;
 });
 
 describe('execute', () => {
@@ -24,7 +32,7 @@ describe('execute', () => {
 		process.argv = saveArgv;
 	});
 
-	it('should throw error', async() => {
+	it('should throw error 1', async() => {
 		process.argv = [
 			'node',
 			'index.js',
@@ -33,6 +41,17 @@ describe('execute', () => {
 		];
 
 		await expect(execute()).rejects.toThrow('<token> is required.');
+	});
+
+	it('should throw error 2', async() => {
+		process.argv = [
+			'node',
+			'index.js',
+			'--token',
+			'token',
+		];
+
+		await expect(execute()).rejects.toThrow('<tag> is required.');
 	});
 
 	it('should do nothing', async() => {
@@ -55,7 +74,7 @@ describe('execute', () => {
 		]);
 	});
 
-	it('should push', async() => {
+	it('should push 1', async() => {
 		const mockExec   = spyOnExec();
 		const mockStdout = spyOnStdout();
 		const cwd        = process.cwd();
@@ -197,6 +216,137 @@ describe('execute', () => {
 			'  >> stdout',
 			'[command]git tag test/v1',
 			'  >> stdout',
+			'[command]git push --tags origin gh-actions:refs/heads/gh-actions',
+		]);
+	});
+
+	it('should push 2', async() => {
+		const mockExec   = spyOnExec();
+		const mockStdout = spyOnStdout();
+		const cwd        = process.cwd();
+		process.argv     = [
+			'node',
+			'index.js',
+			'--token',
+			'token',
+			'-p',
+			'__tests__/fixtures/test11',
+			'-w',
+			'__tests__/tmp',
+			'--test',
+		];
+		setChildProcessParams({
+			stdout: (command) => {
+				if (command === 'git tag') {
+					return 'v1\nv1.2.3\n1.2';
+				}
+
+				return '';
+			},
+		});
+		setExists([false, true, false]);
+
+		await execute();
+
+		execCalledWith(mockExec, [
+			'git tag',
+			`rm -rdf ${cwd}/__tests__/tmp/.work/build ${cwd}/__tests__/tmp/.work/push`,
+			'git init \'.\'',
+			'git remote add origin \'https://test-owner:token@github.com/test-owner/test-repo.git\' > /dev/null 2>&1 || :',
+			'git fetch --no-tags origin \'refs/heads/gh-actions:refs/remotes/origin/gh-actions\' || :',
+			'git checkout -b gh-actions origin/gh-actions || :',
+			'git init \'.\'',
+			'git checkout --orphan gh-actions',
+			`rsync -ac -C '--filter=:- .gitignore' --exclude '.git' --exclude '.work' --exclude '.github' --delete './' '${cwd}/__tests__/tmp/.work/build'`,
+			'rm -rdf node_modules',
+			'npm install --production',
+			`mv -f '${cwd}/__tests__/tmp/.work/build/action.yaml' '${cwd}/__tests__/tmp/.work/push/action.yml' > /dev/null 2>&1 || :`,
+			`mv -f '${cwd}/__tests__/tmp/.work/build/action.yml' '${cwd}/__tests__/tmp/.work/push/action.yml' > /dev/null 2>&1 || :`,
+			'rm -rdf .[!.]*',
+			'rm -rdf *.js',
+			'rm -rdf *.ts',
+			'rm -rdf *.json',
+			'rm -rdf *.lock',
+			'rm -rdf *.yml',
+			'rm -rdf *.yaml',
+			'rm -rdf __tests__ src',
+			`mv -f '${cwd}/__tests__/tmp/.work/push/action.yml' '${cwd}/__tests__/tmp/.work/build/action.yml' > /dev/null 2>&1 || :`,
+			`rsync -rl --exclude '.git' --delete '${cwd}/__tests__/tmp/.work/build/' '${cwd}/__tests__/tmp/.work/push'`,
+			'git config \'user.name\' \'github-actions[bot]\'',
+			'git config \'user.email\' \'41898282+github-actions[bot]@users.noreply.github.com\'',
+			'git add --all',
+			'git commit --allow-empty -qm \'feat: Build for release\'',
+			'git show \'--stat-count=10\' HEAD',
+			'git tag',
+			'git tag -d v1 \'v1.2.3\' \'1.2\' > /dev/null 2>&1',
+			'git fetch \'https://test-owner:token@github.com/test-owner/test-repo.git\' --tags > /dev/null 2>&1',
+			'git push \'https://test-owner:token@github.com/test-owner/test-repo.git\' --delete \'tags/test/v1.2.4\' > /dev/null 2>&1 || :',
+			'git push \'https://test-owner:token@github.com/test-owner/test-repo.git\' --delete \'tags/test/v1.2\' > /dev/null 2>&1 || :',
+			'git push \'https://test-owner:token@github.com/test-owner/test-repo.git\' --delete tags/test/v1 > /dev/null 2>&1 || :',
+			'git tag -d \'test/v1.2.4\' || :',
+			'git tag -d \'test/v1.2\' || :',
+			'git tag -d test/v1 || :',
+			'git tag \'test/v1.2.4\'',
+			'git tag \'test/v1.2\'',
+			'git tag test/v1',
+			'git push --tags \'https://test-owner:token@github.com/test-owner/test-repo.git\' \'gh-actions:refs/heads/gh-actions\' > /dev/null 2>&1 || :',
+		]);
+		stdoutCalledWith(mockStdout, [
+			'[command]git tag',
+			'  >> v1',
+			'  >> v1.2.3',
+			'  >> 1.2',
+			'[command]rm -rdf <Build Directory> <Push Directory>',
+			'::group::Fetching...',
+			'[command]git init \'.\'',
+			'[command]git remote add origin',
+			'[command]git fetch --no-tags origin \'refs/heads/gh-actions:refs/remotes/origin/gh-actions\'',
+			'::endgroup::',
+			'::group::Switching branch to [gh-actions]...',
+			'[command]git checkout -b gh-actions origin/gh-actions',
+			'> remote branch gh-actions not found.',
+			'> now branch: ',
+			'::endgroup::',
+			'::group::Initializing local git repo [gh-actions]...',
+			'[command]git init \'.\'',
+			'[command]git checkout --orphan gh-actions',
+			'::endgroup::',
+			'::group::Copying current source to build directory...',
+			'[command]rsync -ac -C \'--filter=:- .gitignore\' --exclude \'.git\' --exclude \'.work\' --exclude \'.github\' --delete \'./\' \'<Build Directory>\'',
+			'::endgroup::',
+			'::group::Running build for release...',
+			'[command]rm -rdf node_modules',
+			'[command]npm install --production',
+			'[command]rm -rdf .[!.]*',
+			'[command]rm -rdf *.js',
+			'[command]rm -rdf *.ts',
+			'[command]rm -rdf *.json',
+			'[command]rm -rdf *.lock',
+			'[command]rm -rdf *.yml',
+			'[command]rm -rdf *.yaml',
+			'[command]rm -rdf __tests__ src',
+			'::endgroup::',
+			'::group::Copying <Build Directory> contents to <Push Directory>...',
+			'[command]rsync -rl --exclude \'.git\' --delete \'<Build Directory>/\' \'<Push Directory>\'',
+			'::endgroup::',
+			'::group::Configuring git committer to be github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>...',
+			'[command]git config \'user.name\' \'github-actions[bot]\'',
+			'[command]git config \'user.email\' \'41898282+github-actions[bot]@users.noreply.github.com\'',
+			'[command]git add --all',
+			'[command]git commit --allow-empty -qm \'feat: Build for release\'',
+			'[command]git show \'--stat-count=10\' HEAD',
+			'::endgroup::',
+			'::group::Pushing to test-owner/test-repo@gh-actions (tag: test/v1.2.4)...',
+			'[command]git fetch origin --tags',
+			'[command]git push origin --delete tags/test/v1.2.4',
+			'[command]git push origin --delete tags/test/v1.2',
+			'[command]git push origin --delete tags/test/v1',
+			'[command]git tag -d \'test/v1.2.4\'',
+			'[command]git tag -d \'test/v1.2\'',
+			'[command]git tag -d test/v1',
+			'[command]git tag \'test/v1.2.4\'',
+			'[command]git tag \'test/v1.2\'',
+			'[command]git tag test/v1',
 			'[command]git push --tags origin gh-actions:refs/heads/gh-actions',
 		]);
 	});

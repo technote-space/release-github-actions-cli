@@ -74,6 +74,12 @@ e.g.
 --token 1234567890
 ```
 
+Not required if you have a `.env` file with` token`.  
+e.g.
+```dotenv
+token=1234567890
+```
+
 #### tag
 [detail](https://github.com/technote-space/release-github-actions#condition)
 
@@ -85,6 +91,8 @@ e.g.
 ```
 -t v1.2.3
 ```
+
+Not required if [`test`](# test) option is set.
 
 ### Option
 #### branch
@@ -123,6 +131,12 @@ e.g.
 ```
 -p /tmp/test-repo
 ```
+
+#### test
+Test mode
+
+The tag name is determined from the latest tag.  
+`test/` is set as the test tag prefix.
 
 ## Settings
 `Release GitHub Actions CLI` can be configured using `.releasegarc`, `.releasegarc.json`, `.releasegarc.js`, `.releasega.config.js` or `releasega` property in `package.json`.
