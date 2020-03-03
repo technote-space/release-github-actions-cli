@@ -74,6 +74,12 @@
 --token 1234567890
 ```
 
+`token` が書かれた `.env` ファイルを用意している場合は不要です。  
+例：
+```dotenv
+token=1234567890
+```
+
 #### tag
 [detail](https://github.com/technote-space/release-github-actions#condition)
 
