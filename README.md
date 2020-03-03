@@ -86,6 +86,8 @@ e.g.
 -t v1.2.3
 ```
 
+Not required if [`test`](# test) option is set.
+
 ### Option
 #### branch
 Branch name to use for build.   
@@ -123,6 +125,12 @@ e.g.
 ```
 -p /tmp/test-repo
 ```
+
+#### test
+Test mode
+
+The tag name is determined from the latest tag.  
+`test/` is set as the test tag prefix.
 
 ## Settings
 `Release GitHub Actions CLI` can be configured using `.releasegarc`, `.releasegarc.json`, `.releasegarc.js`, `.releasega.config.js` or `releasega` property in `package.json`.

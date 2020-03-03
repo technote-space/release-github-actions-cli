@@ -1,9 +1,10 @@
 /* eslint-disable no-magic-numbers */
 import { resolve } from 'path';
-import { testEnv } from '@technote-space/github-action-test-helper';
+import { testEnv, testFs, setChildProcessParams } from '@technote-space/github-action-test-helper';
 import { getRepository, getContext, getContextArgs, getGitHelper } from '../src/misc';
 
 const fixturesDir = resolve(__dirname, 'fixtures');
+testFs(true);
 
 describe('getRepository', () => {
 	it('should throw error 1', () => {
@@ -59,8 +60,21 @@ describe('getContext', () => {
 });
 
 describe('getContextArgs', () => {
-	it('should get context args', () => {
-		expect(getContextArgs('v1.2.3', 'release/v1.2.3', {
+	testEnv();
+
+	it('should throw', async() => {
+		process.env.INPUT_GITHUB_TOKEN = 'token';
+
+		await expect(getContextArgs(getGitHelper(), undefined, 'release/v1.2.3', '', {
+			owner: 'test-owner',
+			repo: 'test-repo',
+		})).rejects.toThrow('<tag> is required.');
+	});
+
+	it('should get context args 1', async() => {
+		process.env.INPUT_GITHUB_TOKEN = 'token';
+
+		expect(await getContextArgs(getGitHelper(), 'v1.2.3', 'release/v1.2.3', '', {
 			owner: 'test-owner',
 			repo: 'test-repo',
 		})).toEqual({
@@ -68,6 +82,35 @@ describe('getContextArgs', () => {
 			repo: 'test-repo',
 			branch: 'release/v1.2.3',
 			tagName: 'v1.2.3',
+		});
+	});
+
+	it('should get context args 2', async() => {
+		process.env.INPUT_GITHUB_TOKEN = 'token';
+		setChildProcessParams({
+			stdout: (command) => {
+				if (command === 'git tag') {
+					return 'v1\nv1.2.3\n1.2';
+				}
+
+				return '';
+			},
+		});
+
+		expect(await getContextArgs(getGitHelper(), '', 'release/v1.2.3', '', {
+			owner: 'test-owner',
+			repo: 'test-repo',
+			inputs: {
+				TEST_TAG_PREFIX: 'test/',
+			},
+		})).toEqual({
+			owner: 'test-owner',
+			repo: 'test-repo',
+			branch: 'release/v1.2.3',
+			tagName: 'test/v1.2.4',
+			inputs: {
+				'TEST_TAG_PREFIX': 'test/',
+			},
 		});
 	});
 });

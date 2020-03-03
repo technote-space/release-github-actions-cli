@@ -54,7 +54,7 @@ describe('getActionDefaultInputs', () => {
 
 describe('getConfig', () => {
 	it('should get config 1', () => {
-		expect(getConfig(resolve(fixturesDir, 'test7'))).toEqual({
+		expect(getConfig(resolve(fixturesDir, 'test7'), undefined)).toEqual({
 			'inputs': {
 				'BRANCH_NAME': 'gh-actions',
 				'BUILD_COMMAND': '',
@@ -80,7 +80,7 @@ describe('getConfig', () => {
 	});
 
 	it('should get config 2', () => {
-		expect(getConfig(resolve(fixturesDir, 'test8'))).toEqual({
+		expect(getConfig(resolve(fixturesDir, 'test8'), false)).toEqual({
 			'inputs': {
 				'BRANCH_NAME': 'gh-actions',
 				'BUILD_COMMAND': '',
@@ -105,7 +105,7 @@ describe('getConfig', () => {
 	});
 
 	it('should get config 3', () => {
-		expect(getConfig(resolve(fixturesDir, 'test9'))).toEqual({
+		expect(getConfig(resolve(fixturesDir, 'test9'), true)).toEqual({
 			'inputs': {
 				'BRANCH_NAME': 'gh-actions',
 				'BUILD_COMMAND': '',
@@ -122,7 +122,7 @@ describe('getConfig', () => {
 				'ORIGINAL_TAG_PREFIX': '',
 				'OUTPUT_BUILD_INFO_FILENAME': '',
 				'PACKAGE_MANAGER': '',
-				'TEST_TAG_PREFIX': '',
+				'TEST_TAG_PREFIX': 'test/',
 			},
 			'owner': 'owner9',
 			'repo': 'repo9',
@@ -130,7 +130,7 @@ describe('getConfig', () => {
 	});
 
 	it('should get config 4', () => {
-		expect(getConfig(resolve(fixturesDir, 'test10'))).toEqual({
+		expect(getConfig(resolve(fixturesDir, 'test10'), undefined)).toEqual({
 			'inputs': {
 				'BRANCH_NAME': 'gh-actions',
 				'BUILD_COMMAND': '',
@@ -155,7 +155,7 @@ describe('getConfig', () => {
 	});
 
 	it('should get config 5', () => {
-		expect(getConfig(resolve(fixturesDir, 'test12'))).toEqual({
+		expect(getConfig(resolve(fixturesDir, 'test12'), undefined)).toEqual({
 			'inputs': {
 				'BRANCH_NAME': 'gh-actions',
 				'BUILD_COMMAND': '',
