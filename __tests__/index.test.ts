@@ -301,6 +301,7 @@ describe('execute', () => {
 			'  >> v1',
 			'  >> v1.2.3',
 			'  >> 1.2',
+			'> version: v1.2.4',
 			'[command]rm -rdf <Build Directory> <Push Directory>',
 			'::group::Fetching...',
 			'[command]git init \'.\'',
