@@ -29,7 +29,7 @@
     "release-ga": "./bin/release-ga"
   },
   "dependencies": {
-    "@technote-space/release-github-actions": "^3.0.5",
+    "@technote-space/release-github-actions": "^4.0.0",
     "commander": "^4.1.1",
     "cosmiconfig": "^6.0.0",
     "dotenv": "^8.2.0",
