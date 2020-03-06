@@ -7,8 +7,7 @@
 
 *Read this in other languages: [English](README.md), [日本語](README.ja.md).*
 
-`Release GitHub Actions` の CLIツール  
-[Release GitHub Actions](https://github.com/technote-space/release-github-actions) をラップしたものです。
+[Release GitHub Actions](https://github.com/technote-space/release-github-actions) の CLIツール
 
 ## Table of Contents
 
