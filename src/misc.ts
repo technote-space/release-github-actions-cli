@@ -28,7 +28,9 @@ export const getContextArgs = async(helper: GitHelper, tagName: string | undefin
 			throw new Error('<tag> is required.');
 		}
 
-		return {...config, tagName: config.inputs.TEST_TAG_PREFIX + await helper.getNewPatchVersion(dir), branch};
+		const version = await helper.getNewPatchVersion(dir);
+		(new Logger()).info('version: %s', version);
+		return {...config, tagName: config.inputs.TEST_TAG_PREFIX + version, branch};
 	}
 
 	return {...config, tagName, branch};

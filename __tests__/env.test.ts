@@ -1,9 +1,13 @@
 /* eslint-disable no-magic-numbers */
 import { resolve } from 'path';
 import { testEnv } from '@technote-space/github-action-test-helper';
+import { getParams } from '@technote-space/release-github-actions/lib/utils/misc';
 import { setEnv, loadTokenFromEnv } from '../src/env';
 
 const fixturesDir = resolve(__dirname, 'fixtures');
+beforeEach(() => {
+	getParams.clear();
+});
 
 describe('setEnv', () => {
 	testEnv();

@@ -33,7 +33,7 @@ export const execute = async(): Promise<void> => {
 	}
 
 	await prepare(helper, args);
-	await commit(helper);
+	await commit(helper, args);
 	if (!commander.dryRun) {
 		await push(helper, args);
 	}
