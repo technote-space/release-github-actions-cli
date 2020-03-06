@@ -74,7 +74,7 @@ e.g.
 --token 1234567890
 ```
 
-Not required if you have a `.env` file with` token`.  
+Not required if you have a `.env` file with `token`.  
 e.g.
 ```dotenv
 token=1234567890
@@ -92,7 +92,7 @@ e.g.
 -t v1.2.3
 ```
 
-Not required if [`test`](# test) option is set.
+Not required if [`test`](#test) option is set.
 
 ### Option
 #### branch
