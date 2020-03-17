@@ -4,7 +4,7 @@ import {
 	spyOnStdout,
 	stdoutCalledWith,
 	testChildProcess,
-	spyOnExec,
+	spyOnSpawn,
 	execCalledWith,
 	testFs,
 	setChildProcessParams,
@@ -58,7 +58,7 @@ describe('execute', () => {
 	});
 
 	it('should do nothing', async() => {
-		const mockExec   = spyOnExec();
+		const mockExec   = spyOnSpawn();
 		const mockStdout = spyOnStdout();
 		process.argv     = [
 			'node',
@@ -78,7 +78,7 @@ describe('execute', () => {
 	});
 
 	it('should push 1', async() => {
-		const mockExec   = spyOnExec();
+		const mockExec   = spyOnSpawn();
 		const mockStdout = spyOnStdout();
 		const cwd        = process.cwd();
 		process.argv     = [
@@ -224,7 +224,7 @@ describe('execute', () => {
 	});
 
 	it('should push 2', async() => {
-		const mockExec   = spyOnExec();
+		const mockExec   = spyOnSpawn();
 		const mockStdout = spyOnStdout();
 		const cwd        = process.cwd();
 		process.argv     = [
@@ -360,7 +360,7 @@ describe('execute', () => {
 	});
 
 	it('should dry run', async() => {
-		const mockExec   = spyOnExec();
+		const mockExec   = spyOnSpawn();
 		const mockStdout = spyOnStdout();
 		const cwd        = process.cwd();
 		process.argv     = [
