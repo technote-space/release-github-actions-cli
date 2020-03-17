@@ -18,8 +18,8 @@ CLI tool of [Release GitHub Actions](https://github.com/technote-space/release-g
 
 - [Screenshot](#screenshot)
 - [Usage](#usage)
-  - [For global](#for-global)
   - [For package](#for-package)
+  - [For global](#for-global)
 - [Args](#args)
   - [Required](#required)
   - [Option](#option)
