@@ -16,6 +16,7 @@
 <details>
 <summary>Details</summary>
 
+- [スクリーンショット](#%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88)
 - [使用方法](#%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95)
   - [グローバルで使用](#%E3%82%B0%E3%83%AD%E3%83%BC%E3%83%90%E3%83%AB%E3%81%A7%E4%BD%BF%E7%94%A8)
   - [package で使用](#package-%E3%81%A7%E4%BD%BF%E7%94%A8)

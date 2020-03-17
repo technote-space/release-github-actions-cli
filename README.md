@@ -16,6 +16,7 @@ CLI tool of [Release GitHub Actions](https://github.com/technote-space/release-g
 <details>
 <summary>Details</summary>
 
+- [Screenshot](#screenshot)
 - [Usage](#usage)
   - [For global](#for-global)
   - [For package](#for-package)
