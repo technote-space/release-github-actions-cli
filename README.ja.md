@@ -36,21 +36,6 @@
 ![Cli](https://github.com/technote-space/release-github-actions-cli/raw/images/cli.gif)
 
 ## 使用方法
-### グローバルで使用
-1. インストール
-    ```shell script
-    yarn global add @technote-space/release-github-actions-cli
-    ```
-1. コマンド実行
-    ```shell script
-    release-ga --token <token> -p <package dir> -t <tag>
-    ```
-
-    ヘルプ表示
-    
-    ```shell script
-    release-ga -h
-    ```
 ### package で使用
 1. インストール
     ```shell script
@@ -65,6 +50,22 @@
     
     ```shell script
     yarn release-ga -h
+    ```
+
+### グローバルで使用
+1. インストール
+    ```shell script
+    yarn global add @technote-space/release-github-actions-cli
+    ```
+1. コマンド実行
+    ```shell script
+    release-ga --token <token> -p <package dir> -t <tag>
+    ```
+
+    ヘルプ表示
+    
+    ```shell script
+    release-ga -h
     ```
 
 ## Args
