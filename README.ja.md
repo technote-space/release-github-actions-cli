@@ -31,6 +31,9 @@
 </details>
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
+## スクリーンショット
+![Cli](https://github.com/technote-space/release-github-actions-cli/raw/images/cli.gif)
+
 ## 使用方法
 ### グローバルで使用
 1. インストール

@@ -31,6 +31,9 @@ CLI tool of [Release GitHub Actions](https://github.com/technote-space/release-g
 </details>
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
+## Screenshot
+![Cli](https://github.com/technote-space/release-github-actions-cli/raw/images/cli.gif)
+
 ## Usage
 ### For global
 1. Install
