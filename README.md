@@ -16,9 +16,10 @@ CLI tool of [Release GitHub Actions](https://github.com/technote-space/release-g
 <details>
 <summary>Details</summary>
 
+- [Screenshot](#screenshot)
 - [Usage](#usage)
-  - [For global](#for-global)
   - [For package](#for-package)
+  - [For global](#for-global)
 - [Args](#args)
   - [Required](#required)
   - [Option](#option)
@@ -31,22 +32,10 @@ CLI tool of [Release GitHub Actions](https://github.com/technote-space/release-g
 </details>
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-## Usage
-### For global
-1. Install
-    ```shell script
-    yarn global add @technote-space/release-github-actions-cli
-    ```
-1. Run command
-    ```shell script
-    release-ga --token <token> -p <package dir> -t <tag>
-    ```
+## Screenshot
+![Cli](https://github.com/technote-space/release-github-actions-cli/raw/images/cli.gif)
 
-    show help
-    
-    ```shell script
-    release-ga -h
-    ```
+## Usage
 ### For package
 1. Install
     ```shell script
@@ -61,6 +50,22 @@ CLI tool of [Release GitHub Actions](https://github.com/technote-space/release-g
     
     ```shell script
     yarn release-ga -h
+    ```
+
+### For global
+1. Install
+    ```shell script
+    yarn global add @technote-space/release-github-actions-cli
+    ```
+1. Run command
+    ```shell script
+    release-ga --token <token> -p <package dir> -t <tag>
+    ```
+
+    show help
+    
+    ```shell script
+    release-ga -h
     ```
 
 ## Args

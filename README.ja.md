@@ -16,9 +16,10 @@
 <details>
 <summary>Details</summary>
 
+- [スクリーンショット](#%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88)
 - [使用方法](#%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95)
-  - [グローバルで使用](#%E3%82%B0%E3%83%AD%E3%83%BC%E3%83%90%E3%83%AB%E3%81%A7%E4%BD%BF%E7%94%A8)
   - [package で使用](#package-%E3%81%A7%E4%BD%BF%E7%94%A8)
+  - [グローバルで使用](#%E3%82%B0%E3%83%AD%E3%83%BC%E3%83%90%E3%83%AB%E3%81%A7%E4%BD%BF%E7%94%A8)
 - [Args](#args)
   - [必須](#%E5%BF%85%E9%A0%88)
   - [オプション](#%E3%82%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3)
@@ -31,22 +32,10 @@
 </details>
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-## 使用方法
-### グローバルで使用
-1. インストール
-    ```shell script
-    yarn global add @technote-space/release-github-actions-cli
-    ```
-1. コマンド実行
-    ```shell script
-    release-ga --token <token> -p <package dir> -t <tag>
-    ```
+## スクリーンショット
+![Cli](https://github.com/technote-space/release-github-actions-cli/raw/images/cli.gif)
 
-    ヘルプ表示
-    
-    ```shell script
-    release-ga -h
-    ```
+## 使用方法
 ### package で使用
 1. インストール
     ```shell script
@@ -61,6 +50,22 @@
     
     ```shell script
     yarn release-ga -h
+    ```
+
+### グローバルで使用
+1. インストール
+    ```shell script
+    yarn global add @technote-space/release-github-actions-cli
+    ```
+1. コマンド実行
+    ```shell script
+    release-ga --token <token> -p <package dir> -t <tag>
+    ```
+
+    ヘルプ表示
+    
+    ```shell script
+    release-ga -h
     ```
 
 ## Args
