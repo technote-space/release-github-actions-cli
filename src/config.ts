@@ -54,7 +54,7 @@ export const getConfig = (dir: string, isTest: boolean | undefined): Config | ne
 			...getActionDefaultInputs(),
 			...{
 				TEST_TAG_PREFIX: isTest ? 'test/' : '',
-				BRANCH_NAME: isTest ? 'releases/${MAJOR}, gh-actions' : 'releases/${MAJOR}',
+				BRANCH_NAME: 'gh-actions',
 			},
 			...normalizeConfigKeys(config.inputs ?? config.INPUTS ?? {}),
 		},

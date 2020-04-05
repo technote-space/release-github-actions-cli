@@ -36,9 +36,10 @@ describe('normalizeConfigKeys', () => {
 describe('getActionDefaultInputs', () => {
 	it('should get inputs', () => {
 		expect(getActionDefaultInputs()).toEqual({
-			'BRANCH_NAME': 'releases/${MAJOR}',
+			'BRANCH_NAME': 'gh-actions',
 			'BUILD_COMMAND': '',
-			'BUILD_COMMAND_TARGET': 'build,production,prod,package,pack',
+			'BUILD_COMMAND_TARGET': 'prepare,build,production,prod,package,pack',
+			'ALLOW_MULTIPLE_BUILD_COMMANDS': 'true',
 			'CLEAN_TARGETS': '.[!.]*,__tests__,docs,src,*.js,*.ts,*.json,*.lock,*.yml,*.yaml',
 			'CLEAN_TEST_TAG': 'false',
 			'COMMIT_EMAIL': '41898282+github-actions[bot]@users.noreply.github.com',
@@ -61,9 +62,10 @@ describe('getConfig', () => {
 	it('should get config 1', () => {
 		expect(getConfig(resolve(fixturesDir, 'test7'), undefined)).toEqual({
 			'inputs': {
-				'BRANCH_NAME': 'releases/${MAJOR}',
+				'BRANCH_NAME': 'gh-actions',
 				'BUILD_COMMAND': '',
-				'BUILD_COMMAND_TARGET': 'build,production,prod,package,pack',
+				'BUILD_COMMAND_TARGET': 'prepare,build,production,prod,package,pack',
+				'ALLOW_MULTIPLE_BUILD_COMMANDS': 'true',
 				'CLEAN_TARGETS': '.[!.]*,__tests__,docs,src,*.js,*.ts,*.json,*.lock,*.yml,*.yaml',
 				'CLEAN_TEST_TAG': 'false',
 				'COMMIT_EMAIL': '41898282+github-actions[bot]@users.noreply.github.com',
@@ -88,9 +90,10 @@ describe('getConfig', () => {
 	it('should get config 2', () => {
 		expect(getConfig(resolve(fixturesDir, 'test8'), false)).toEqual({
 			'inputs': {
-				'BRANCH_NAME': 'releases/${MAJOR}',
+				'BRANCH_NAME': 'gh-actions',
 				'BUILD_COMMAND': '',
-				'BUILD_COMMAND_TARGET': 'build,production,prod,package,pack',
+				'BUILD_COMMAND_TARGET': 'prepare,build,production,prod,package,pack',
+				'ALLOW_MULTIPLE_BUILD_COMMANDS': 'true',
 				'CLEAN_TARGETS': '.[!.]*,__tests__,docs,src,*.js,*.ts,*.json,*.lock,*.yml,*.yaml',
 				'CLEAN_TEST_TAG': 'false',
 				'COMMIT_EMAIL': '41898282+github-actions[bot]@users.noreply.github.com',
@@ -114,9 +117,10 @@ describe('getConfig', () => {
 	it('should get config 3', () => {
 		expect(getConfig(resolve(fixturesDir, 'test9'), true)).toEqual({
 			'inputs': {
-				'BRANCH_NAME': 'releases/${MAJOR}, gh-actions',
+				'BRANCH_NAME': 'gh-actions',
 				'BUILD_COMMAND': '',
-				'BUILD_COMMAND_TARGET': 'build,production,prod,package,pack',
+				'BUILD_COMMAND_TARGET': 'prepare,build,production,prod,package,pack',
+				'ALLOW_MULTIPLE_BUILD_COMMANDS': 'true',
 				'CLEAN_TARGETS': '.[!.]*,__tests__,docs,src,*.js,*.ts,*.json,*.lock,*.yml,*.yaml',
 				'CLEAN_TEST_TAG': 'false',
 				'COMMIT_EMAIL': '41898282+github-actions[bot]@users.noreply.github.com',
@@ -140,9 +144,10 @@ describe('getConfig', () => {
 	it('should get config 4', () => {
 		expect(getConfig(resolve(fixturesDir, 'test10'), undefined)).toEqual({
 			'inputs': {
-				'BRANCH_NAME': 'releases/${MAJOR}',
+				'BRANCH_NAME': 'gh-actions',
 				'BUILD_COMMAND': '',
-				'BUILD_COMMAND_TARGET': 'build,production,prod,package,pack',
+				'BUILD_COMMAND_TARGET': 'prepare,build,production,prod,package,pack',
+				'ALLOW_MULTIPLE_BUILD_COMMANDS': 'true',
 				'CLEAN_TARGETS': '.[!.]*,__tests__,docs,src,*.js,*.ts,*.json,*.lock,*.yml,*.yaml',
 				'CLEAN_TEST_TAG': 'false',
 				'COMMIT_EMAIL': '41898282+github-actions[bot]@users.noreply.github.com',
@@ -166,9 +171,10 @@ describe('getConfig', () => {
 	it('should get config 5', () => {
 		expect(getConfig(resolve(fixturesDir, 'test12'), undefined)).toEqual({
 			'inputs': {
-				'BRANCH_NAME': 'releases/${MAJOR}',
+				'BRANCH_NAME': 'gh-actions',
 				'BUILD_COMMAND': '',
-				'BUILD_COMMAND_TARGET': 'build,production,prod,package,pack',
+				'BUILD_COMMAND_TARGET': 'prepare,build,production,prod,package,pack',
+				'ALLOW_MULTIPLE_BUILD_COMMANDS': 'true',
 				'CLEAN_TARGETS': '.[!.]*,__tests__,docs,src,*.js,*.ts,*.json,*.lock,*.yml,*.yaml',
 				'CLEAN_TEST_TAG': 'false',
 				'COMMIT_EMAIL': '41898282+github-actions[bot]@users.noreply.github.com',
