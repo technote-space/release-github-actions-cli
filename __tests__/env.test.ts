@@ -1,61 +1,61 @@
 /* eslint-disable no-magic-numbers */
-import { resolve } from 'path';
-import { testEnv } from '@technote-space/github-action-test-helper';
-import { getParams } from '@technote-space/release-github-actions/lib/utils/misc';
-import { setEnv, loadTokenFromEnv } from '../src/env';
+import {resolve} from 'path';
+import {testEnv} from '@technote-space/github-action-test-helper';
+import {getParams} from '@technote-space/release-github-actions/lib/utils/misc';
+import {setEnv, loadTokenFromEnv} from '../src/env';
 
 const fixturesDir = resolve(__dirname, 'fixtures');
 beforeEach(() => {
-	getParams.clear();
+  getParams.clear();
 });
 
 describe('setEnv', () => {
-	testEnv();
+  testEnv();
 
-	it('should set env 1', () => {
-		delete process.env.GITHUB_ACTOR;
-		delete process.env.GITHUB_WORKSPACE;
+  it('should set env 1', () => {
+    delete process.env.GITHUB_ACTOR;
+    delete process.env.GITHUB_WORKSPACE;
 
-		setEnv({
-			owner: 'test-owner',
-			repo: 'test-repo',
-		}, '.');
+    setEnv({
+      owner: 'test-owner',
+      repo: 'test-repo',
+    }, '.');
 
-		expect(process.env).toHaveProperty('GITHUB_ACTOR');
-		expect(process.env).toHaveProperty('GITHUB_WORKSPACE');
-		expect(process.env).not.toHaveProperty('INPUT_COMMIT_NAME');
-		expect(process.env).not.toHaveProperty('INPUT_FETCH_DEPTH');
-	});
+    expect(process.env).toHaveProperty('GITHUB_ACTOR');
+    expect(process.env).toHaveProperty('GITHUB_WORKSPACE');
+    expect(process.env).not.toHaveProperty('INPUT_COMMIT_NAME');
+    expect(process.env).not.toHaveProperty('INPUT_FETCH_DEPTH');
+  });
 
-	it('should set env 2', () => {
-		delete process.env.GITHUB_ACTOR;
-		delete process.env.GITHUB_WORKSPACE;
+  it('should set env 2', () => {
+    delete process.env.GITHUB_ACTOR;
+    delete process.env.GITHUB_WORKSPACE;
 
-		setEnv({
-			owner: 'test-owner',
-			repo: 'test-repo',
-			inputs: {
-				COMMIT_NAME: 'test name',
-				FETCH_DEPTH: '5',
-			},
-		}, 'test');
+    setEnv({
+      owner: 'test-owner',
+      repo: 'test-repo',
+      inputs: {
+        COMMIT_NAME: 'test name',
+        FETCH_DEPTH: '5',
+      },
+    }, 'test');
 
-		expect(process.env).toHaveProperty('GITHUB_ACTOR');
-		expect(process.env).toHaveProperty('GITHUB_WORKSPACE');
-		expect(process.env).toHaveProperty('INPUT_COMMIT_NAME');
-		expect(process.env).toHaveProperty('INPUT_FETCH_DEPTH');
-	});
+    expect(process.env).toHaveProperty('GITHUB_ACTOR');
+    expect(process.env).toHaveProperty('GITHUB_WORKSPACE');
+    expect(process.env).toHaveProperty('INPUT_COMMIT_NAME');
+    expect(process.env).toHaveProperty('INPUT_FETCH_DEPTH');
+  });
 });
 
 describe('loadTokenFromEnv', () => {
-	testEnv();
+  testEnv();
 
-	it('should load token', () => {
-		expect(loadTokenFromEnv(resolve(fixturesDir, 'test1'))).toBe('test-token1');
-		expect(loadTokenFromEnv(resolve(fixturesDir, 'test2'))).toBe('test-token2');
-	});
+  it('should load token', () => {
+    expect(loadTokenFromEnv(resolve(fixturesDir, 'test1'))).toBe('test-token1');
+    expect(loadTokenFromEnv(resolve(fixturesDir, 'test2'))).toBe('test-token2');
+  });
 
-	it('should not load token', () => {
-		expect(loadTokenFromEnv(resolve(fixturesDir, 'test3'))).toBeUndefined();
-	});
+  it('should not load token', () => {
+    expect(loadTokenFromEnv(resolve(fixturesDir, 'test3'))).toBeUndefined();
+  });
 });
