@@ -58,6 +58,9 @@ export const getContext = (args: ContextArgs): Context => ({
     owner: args.owner,
     repo: args.repo,
   },
+  job: '',
+  runId: 1,
+  runNumber: 1,
 });
 
 export const getGitHelper = (): GitHelper => new GitHelper(new Logger());
