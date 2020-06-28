@@ -59,6 +59,9 @@ describe('getContext', () => {
         owner: 'test-owner',
         repo: 'test-repo',
       },
+      job: '',
+      runId: 1,
+      runNumber: 1,
     });
   });
 });
