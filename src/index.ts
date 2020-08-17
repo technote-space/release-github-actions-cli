@@ -11,7 +11,6 @@ export const execute = async(): Promise<void> => {
     .option('-b, --branch [branch]', 'branch name')
     .option('-w, --workspace [workspace]', 'working directory name', '.')
     .option('-p, --package [package]', 'package file directory name', process.cwd())
-    .option('-e, --env [env]', 'env file name', '.env')
     .option('-n, --dry-run', 'show what would have been pushed')
     .option('--test', 'whether it is test')
     .parse(process.argv);
