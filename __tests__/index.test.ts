@@ -9,7 +9,7 @@ import {
   testFs,
   setChildProcessParams,
 } from '@technote-space/github-action-test-helper';
-import {Logger} from '@technote-space/github-action-helper';
+import {Logger} from '@technote-space/github-action-log-helper';
 import {getParams} from '@technote-space/release-github-actions/lib/utils/misc';
 import commander from 'commander';
 import {execute} from '../src';
