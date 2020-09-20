@@ -1,7 +1,8 @@
 import {readFileSync} from 'fs';
 import {resolve} from 'path';
 import {Context} from '@actions/github/lib/context';
-import {GitHelper, Logger} from '@technote-space/github-action-helper';
+import {GitHelper} from '@technote-space/github-action-helper';
+import {Logger} from '@technote-space/github-action-log-helper';
 import {Config, ContextArgs} from './types';
 
 export const getRepository = (dir: string): { owner: string; repo: string } | never => {

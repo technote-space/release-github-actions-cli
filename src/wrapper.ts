@@ -1,6 +1,7 @@
 import {mkdirSync} from 'fs';
 import {Context} from '@actions/github/lib/context';
-import {GitHelper, Logger, Command} from '@technote-space/github-action-helper';
+import {GitHelper, Command} from '@technote-space/github-action-helper';
+import {Logger} from '@technote-space/github-action-log-helper';
 import * as command from '@technote-space/release-github-actions/lib/utils/command';
 import * as misc from '@technote-space/release-github-actions/lib/utils/misc';
 import {getContext} from './misc';
