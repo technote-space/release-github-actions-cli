@@ -1,6 +1,6 @@
 {
   "name": "@technote-space/release-github-actions-cli",
-  "version": "1.7.0",
+  "version": "1.7.1",
   "description": "Release GitHub Actions Cli",
   "author": {
     "name": "Technote",
@@ -30,7 +30,7 @@
   },
   "dependencies": {
     "@technote-space/github-action-log-helper": "^0.1.0",
-    "@technote-space/release-github-actions": "^6.1.0",
+    "@technote-space/release-github-actions": "^6.2.0",
     "commander": "^6.1.0",
     "cosmiconfig": "^7.0.0",
     "dotenv": "^8.2.0",
