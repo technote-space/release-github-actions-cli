@@ -29,7 +29,7 @@
     "release-ga": "./bin/release-ga"
   },
   "dependencies": {
-    "@technote-space/github-action-helper": "^4.2.4",
+    "@technote-space/github-action-helper": "^4.2.6",
     "@technote-space/github-action-log-helper": "^0.1.7",
     "@technote-space/release-github-actions": "^6.2.3",
     "commander": "^6.2.0",
