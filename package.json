@@ -1,32 +1,41 @@
 {
   "name": "@technote-space/release-github-actions-cli",
-  "version": "1.7.2",
+  "version": "1.7.3",
   "description": "Release GitHub Actions Cli",
-  "author": {
-    "name": "Technote",
-    "email": "technote.space@gmail.com",
-    "url": "https://technote.space"
-  },
-  "license": "MIT",
   "keywords": [
     "github",
     "github actions",
     "release"
   ],
   "homepage": "https://github.com/technote-space/release-github-actions-cli",
+  "bugs": {
+    "url": "https://github.com/technote-space/release-github-actions-cli/issues"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/technote-space/release-github-actions-cli.git"
   },
-  "bugs": {
-    "url": "https://github.com/technote-space/release-github-actions-cli/issues"
+  "license": "MIT",
+  "author": {
+    "name": "Technote",
+    "email": "technote.space@gmail.com",
+    "url": "https://technote.space"
+  },
+  "bin": {
+    "release-ga": "./bin/release-ga"
   },
   "files": [
     "lib",
     "bin"
   ],
-  "bin": {
-    "release-ga": "./bin/release-ga"
+  "scripts": {
+    "build": "yarn install && tsc && yarn install --production",
+    "cover": "jest --coverage",
+    "lint": "eslint 'src/**/*.ts' '__tests__/**/*.ts' --cache",
+    "lint:fix": "eslint --fix 'src/**/*.ts' '__tests__/**/*.ts'",
+    "release": "./bin/release-ga",
+    "test": "yarn lint && yarn cover",
+    "update": "npx npm-check-updates -u && yarn install && yarn upgrade && yarn audit"
   },
   "dependencies": {
     "@technote-space/github-action-helper": "^4.2.6",
@@ -55,14 +64,5 @@
   },
   "publishConfig": {
     "access": "public"
-  },
-  "scripts": {
-    "build": "yarn install && tsc && yarn install --production",
-    "test": "yarn lint && yarn cover",
-    "lint": "eslint 'src/**/*.ts' '__tests__/**/*.ts' --cache",
-    "lint:fix": "eslint --fix 'src/**/*.ts' '__tests__/**/*.ts'",
-    "cover": "jest --coverage",
-    "update": "npx npm-check-updates -u && yarn install && yarn upgrade && yarn audit",
-    "release": "./bin/release-ga"
   }
 }
