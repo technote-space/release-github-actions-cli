@@ -38,9 +38,9 @@
     "update": "npx npm-check-updates -u && yarn install && yarn upgrade && yarn audit"
   },
   "dependencies": {
-    "@technote-space/github-action-helper": "^4.4.1",
+    "@technote-space/github-action-helper": "^4.4.4",
     "@technote-space/github-action-log-helper": "^0.1.9",
-    "@technote-space/release-github-actions": "^6.2.4",
+    "@technote-space/release-github-actions": "^6.2.5",
     "commander": "^6.2.0",
     "cosmiconfig": "^7.0.0",
     "dotenv": "^8.2.0",
