@@ -11,20 +11,12 @@ import {
 } from '@technote-space/github-action-test-helper';
 import {Logger} from '@technote-space/github-action-log-helper';
 import {getParams} from '@technote-space/release-github-actions/lib/utils/misc';
-import commander from 'commander';
 import {execute} from '../src';
 
 const setExists = testFs(false);
 const saveArgv  = process.argv;
 beforeEach(() => {
   Logger.resetForTesting();
-  delete commander.token;
-  delete commander.package;
-  delete commander.test;
-  delete commander.tag;
-  delete commander.branch;
-  delete commander.workspace;
-  delete commander.dryRun;
   getParams.clear();
 });
 
@@ -132,7 +124,7 @@ describe('execute', () => {
       'git tag \'test/v1.2.3\'',
       'git tag \'test/v1.2\'',
       'git tag test/v1',
-      'git push --tags --force \'https://test-owner:token@github.com/test-owner/test-repo.git\' \'gh-actions:refs/heads/gh-actions\' || :',
+      'git push --tags --force \'https://test-owner:token@github.com/test-owner/test-repo.git\' \'gh-actions:refs/heads/gh-actions\'',
     ]);
     stdoutCalledWith(mockStdout, [
       '[command]rm -rdf <Build Directory> <Push Directory>',
@@ -281,7 +273,7 @@ describe('execute', () => {
       'git tag \'test/v1.2.4\'',
       'git tag \'test/v1.2\'',
       'git tag test/v1',
-      'git push --tags --force \'https://test-owner:token@github.com/test-owner/test-repo.git\' \'gh-actions:refs/heads/gh-actions\' || :',
+      'git push --tags --force \'https://test-owner:token@github.com/test-owner/test-repo.git\' \'gh-actions:refs/heads/gh-actions\'',
     ]);
     stdoutCalledWith(mockStdout, [
       '[command]git tag',

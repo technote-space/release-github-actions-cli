@@ -1,7 +1,7 @@
 import {cosmiconfigSync} from 'cosmiconfig';
 import {existsSync, readFileSync} from 'fs';
 import {resolve} from 'path';
-import yaml from 'js-yaml';
+import {load} from 'js-yaml';
 import {getRepository} from './misc';
 import {Config} from './types';
 
@@ -17,7 +17,7 @@ const getActionSettingFile = (): string => existsSync(resolve(__dirname, '../../
   resolve(__dirname, '../node_modules/@technote-space/release-github-actions/action.yml');
 
 export const getActionDefaultInputs = (): { [key: string]: string } => {
-  const actionSetting = yaml.safeLoad(readFileSync(getActionSettingFile(), 'utf8'));
+  const actionSetting = load(readFileSync(getActionSettingFile(), 'utf8'));
   const inputs        = actionSetting['inputs'];
   return Object.assign({}, ...Object.keys(inputs).filter(key => 'default' in inputs[key]).map(key => ({
     [normalizeConfigKey(key)]: `${inputs[key].default}`,
