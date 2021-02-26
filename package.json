@@ -36,9 +36,9 @@
     "release": "./bin/release-ga",
     "test": "yarn lint && yarn cover",
     "update": "npx npm-check-updates -u && yarn install && yarn upgrade && yarn audit",
-    "postinstall": "[ -n \"$CI\" ] || husky install",
-    "prepublishOnly": "[ -n \"$CI\" ] || pinst --disable",
-    "postpublish": "[ -n \"$CI\" ] || pinst --enable"
+    "postinstall": "[ -n \"$CI\" ] || [ ! -f node_modules/.bin/husky ] || husky install",
+    "prepublishOnly": "[ -n \"$CI\" ] || [ ! -f node_modules/.bin/pinst ] || pinst --disable",
+    "postpublish": "[ -n \"$CI\" ] || [ ! -f node_modules/.bin/pinst ] || pinst --enable"
   },
   "dependencies": {
     "@technote-space/github-action-helper": "^5.2.2",
