@@ -37,8 +37,8 @@
     "test": "yarn lint && yarn cover",
     "update": "npx npm-check-updates -u && yarn install && yarn upgrade && yarn audit",
     "postinstall": "[ -n \"$CI\" ] || husky install",
-    "prepublishOnly": "pinst --disable",
-    "postpublish": "pinst --enable"
+    "prepublishOnly": "[ -n \"$CI\" ] || pinst --disable",
+    "postpublish": "[ -n \"$CI\" ] || pinst --enable"
   },
   "dependencies": {
     "@technote-space/github-action-helper": "^5.2.2",
