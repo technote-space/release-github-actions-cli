@@ -13,6 +13,7 @@ describe('setEnv', () => {
   testEnv();
 
   it('should set env 1', () => {
+    delete process.env.CI;
     delete process.env.GITHUB_ACTOR;
     delete process.env.GITHUB_WORKSPACE;
 
@@ -21,6 +22,7 @@ describe('setEnv', () => {
       repo: 'test-repo',
     }, '.');
 
+    expect(process.env).toHaveProperty('CI');
     expect(process.env).toHaveProperty('GITHUB_ACTOR');
     expect(process.env).toHaveProperty('GITHUB_WORKSPACE');
     expect(process.env).not.toHaveProperty('INPUT_COMMIT_NAME');
@@ -28,6 +30,7 @@ describe('setEnv', () => {
   });
 
   it('should set env 2', () => {
+    delete process.env.CI;
     delete process.env.GITHUB_ACTOR;
     delete process.env.GITHUB_WORKSPACE;
 
@@ -40,6 +43,7 @@ describe('setEnv', () => {
       },
     }, 'test');
 
+    expect(process.env).toHaveProperty('CI');
     expect(process.env).toHaveProperty('GITHUB_ACTOR');
     expect(process.env).toHaveProperty('GITHUB_WORKSPACE');
     expect(process.env).toHaveProperty('INPUT_COMMIT_NAME');
