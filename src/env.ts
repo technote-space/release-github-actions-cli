@@ -13,6 +13,7 @@ export const loadTokenFromEnv = (dir: string): string | undefined => {
 };
 
 export const setEnv = (config: Config, workspace: string): void => {
+  process.env.CI               = 'true';
   process.env.GITHUB_ACTOR     = config.owner;
   process.env.GITHUB_WORKSPACE = resolve(process.cwd(), workspace);
 
