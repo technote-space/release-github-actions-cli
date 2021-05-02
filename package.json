@@ -41,7 +41,7 @@
     "postpublish": "[ -n \"$CI\" ] || [ ! -f node_modules/.bin/pinst ] || pinst --enable"
   },
   "dependencies": {
-    "@technote-space/github-action-helper": "^5.2.6",
+    "@technote-space/github-action-helper": "^5.2.7",
     "@technote-space/github-action-log-helper": "^0.1.24",
     "@technote-space/release-github-actions": "^7.0.5",
     "commander": "^7.2.0",
