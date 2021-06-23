@@ -62,6 +62,9 @@ export const getContext = (args: ContextArgs): Context => ({
   job: '',
   runId: 1,
   runNumber: 1,
+  apiUrl: '',
+  serverUrl: '',
+  graphqlUrl: '',
 });
 
 export const getGitHelper = (): GitHelper => new GitHelper(new Logger());

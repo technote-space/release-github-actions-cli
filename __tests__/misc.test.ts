@@ -62,6 +62,9 @@ describe('getContext', () => {
       job: '',
       runId: 1,
       runNumber: 1,
+      apiUrl: '',
+      serverUrl: '',
+      graphqlUrl: '',
     });
   });
 });
