@@ -41,10 +41,10 @@
     "postpublish": "[ -n \"$CI\" ] || [ ! -f node_modules/.bin/pinst ] || pinst --enable"
   },
   "dependencies": {
-    "@technote-space/github-action-helper": "^5.2.13",
+    "@technote-space/github-action-helper": "^5.2.15",
     "@technote-space/github-action-log-helper": "^0.1.33",
     "@technote-space/release-github-actions": "^7.0.6",
-    "commander": "^8.0.0",
+    "commander": "^8.1.0",
     "cosmiconfig": "^7.0.0",
     "dotenv": "^10.0.0",
     "js-yaml": "^4.1.0"
@@ -52,12 +52,12 @@
   "devDependencies": {
     "@commitlint/cli": "^13.1.0",
     "@commitlint/config-conventional": "^13.1.0",
-    "@technote-space/github-action-test-helper": "^0.7.18",
+    "@technote-space/github-action-test-helper": "^0.7.19",
     "@types/jest": "^26.0.24",
-    "@types/node": "^16.4.2",
-    "@typescript-eslint/eslint-plugin": "^4.28.4",
-    "@typescript-eslint/parser": "^4.28.4",
-    "eslint": "^7.31.0",
+    "@types/node": "^16.4.9",
+    "@typescript-eslint/eslint-plugin": "^4.28.5",
+    "@typescript-eslint/parser": "^4.28.5",
+    "eslint": "^7.32.0",
     "husky": "^7.0.1",
     "jest": "^27.0.6",
     "jest-circus": "^27.0.6",
