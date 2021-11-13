@@ -1,6 +1,6 @@
 {
   "name": "@technote-space/release-github-actions-cli",
-  "version": "1.8.7",
+  "version": "1.8.8",
   "description": "Release GitHub Actions Cli",
   "keywords": [
     "github",
@@ -31,40 +31,40 @@
   "scripts": {
     "build": "yarn install && tsc && yarn install --production",
     "cover": "jest --coverage",
+    "postinstall": "[ -n \"$CI\" ] || [ ! -f node_modules/.bin/husky ] || husky install",
     "lint": "eslint 'src/**/*.ts' '__tests__/**/*.ts' --cache",
     "lint:fix": "eslint --fix 'src/**/*.ts' '__tests__/**/*.ts'",
+    "prepublishOnly": "[ -n \"$CI\" ] || [ ! -f node_modules/.bin/pinst ] || pinst --disable",
+    "postpublish": "[ -n \"$CI\" ] || [ ! -f node_modules/.bin/pinst ] || pinst --enable",
     "release": "./bin/release-ga",
     "test": "yarn lint && yarn cover",
-    "update": "npm_config_yes=true npx npm-check-updates -u --timeout 100000 && yarn install && yarn upgrade && yarn audit",
-    "postinstall": "[ -n \"$CI\" ] || [ ! -f node_modules/.bin/husky ] || husky install",
-    "prepublishOnly": "[ -n \"$CI\" ] || [ ! -f node_modules/.bin/pinst ] || pinst --disable",
-    "postpublish": "[ -n \"$CI\" ] || [ ! -f node_modules/.bin/pinst ] || pinst --enable"
+    "update": "npm_config_yes=true npx npm-check-updates -u --timeout 100000 && yarn install && yarn upgrade && yarn audit"
   },
   "dependencies": {
-    "@technote-space/github-action-helper": "^5.2.20",
-    "@technote-space/github-action-log-helper": "^0.1.40",
-    "@technote-space/release-github-actions": "^7.0.7",
-    "commander": "^8.1.0",
+    "@technote-space/github-action-helper": "^5.2.23",
+    "@technote-space/github-action-log-helper": "^0.1.41",
+    "@technote-space/release-github-actions": "^7.1.0",
+    "commander": "^8.3.0",
     "cosmiconfig": "^7.0.1",
     "dotenv": "^10.0.0",
     "js-yaml": "^4.1.0"
   },
   "devDependencies": {
-    "@commitlint/cli": "^13.1.0",
-    "@commitlint/config-conventional": "^13.1.0",
-    "@technote-space/github-action-test-helper": "^0.7.27",
-    "@types/jest": "^27.0.1",
-    "@types/node": "^16.7.10",
-    "@typescript-eslint/eslint-plugin": "^4.30.0",
-    "@typescript-eslint/parser": "^4.30.0",
-    "eslint": "^7.32.0",
-    "husky": "^7.0.2",
-    "jest": "^27.1.0",
-    "jest-circus": "^27.1.0",
-    "lint-staged": "^11.1.2",
+    "@commitlint/cli": "^14.1.0",
+    "@commitlint/config-conventional": "^14.1.0",
+    "@technote-space/github-action-test-helper": "^0.7.28",
+    "@types/jest": "^27.0.2",
+    "@types/node": "^16.11.7",
+    "@typescript-eslint/eslint-plugin": "^5.3.1",
+    "@typescript-eslint/parser": "^5.3.1",
+    "eslint": "^8.2.0",
+    "husky": "^7.0.4",
+    "jest": "^27.3.1",
+    "jest-circus": "^27.3.1",
+    "lint-staged": "^11.2.6",
     "pinst": "^2.1.6",
-    "ts-jest": "^27.0.5",
-    "typescript": "^4.4.2"
+    "ts-jest": "^27.0.7",
+    "typescript": "^4.4.4"
   },
   "publishConfig": {
     "access": "public"

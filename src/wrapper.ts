@@ -1,11 +1,12 @@
+import type {Context} from '@actions/github/lib/context';
+import type {GitHelper} from '@technote-space/github-action-helper';
+import type {ContextArgs} from './types';
 import {mkdirSync} from 'fs';
-import {Context} from '@actions/github/lib/context';
-import {GitHelper, Command} from '@technote-space/github-action-helper';
+import {Command} from '@technote-space/github-action-helper';
 import {Logger} from '@technote-space/github-action-log-helper';
 import * as command from '@technote-space/release-github-actions/lib/utils/command';
 import * as misc from '@technote-space/release-github-actions/lib/utils/misc';
 import {getContext} from './misc';
-import {ContextArgs} from './types';
 
 export const isValidContext = (args: ContextArgs): boolean => misc.isValidContext(getContext(args));
 
