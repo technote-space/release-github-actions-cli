@@ -1,7 +1,7 @@
+import type {Config} from './types';
 import dotenv from 'dotenv';
 import {existsSync, readFileSync} from 'fs';
 import {resolve} from 'path';
-import {Config} from './types';
 
 export const loadTokenFromEnv = (dir: string): string | undefined => {
   if (!existsSync(resolve(dir, '.env'))) {

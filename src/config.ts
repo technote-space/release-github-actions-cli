@@ -1,9 +1,9 @@
+import type {Config} from './types';
 import {cosmiconfigSync} from 'cosmiconfig';
 import {existsSync, readFileSync} from 'fs';
 import {resolve} from 'path';
 import {load} from 'js-yaml';
 import {getRepository} from './misc';
-import {Config} from './types';
 
 export const normalizeConfigKey = (key: string): string => key.replace(/[-\s]+/g, '_').toUpperCase();
 
