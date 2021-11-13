@@ -1,11 +1,14 @@
 on:
   schedule:
-    - cron: 0 9 * * 0
+    - cron: 59 23 * * 4
   pull_request:
     types: [opened, reopened, closed]
   repository_dispatch:
     types: [update-deps]
   workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
 
 name: Update dependencies
 jobs:
@@ -22,11 +25,8 @@ jobs:
       - uses: technote-space/load-config-action@v1
         if: env.RUNNING1
         with:
-          CONFIG_FILENAME: workflow-settings.json
-      - uses: technote-space/auto-cancel-redundant-workflow@v1
-        if: env.RUNNING1
-        with:
-          EXCLUDE_MERGED: 'true'
+          CONFIG_FILENAME: workflow-settings.json, workflow-details.json
+          IGNORE_WARNING: 'true'
       - name: Update dependencies
         if: env.RUNNING1
         id: update_deps
