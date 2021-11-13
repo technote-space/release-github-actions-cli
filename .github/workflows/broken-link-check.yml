@@ -1,9 +1,12 @@
 on:
   schedule:
-    - cron: 27 3 4 * *
+    - cron: 18 18 19 * *
   repository_dispatch:
     types: [check-link]
   workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
 
 name: Broken Link Check
 jobs:
@@ -12,8 +15,5 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - uses: technote-space/auto-cancel-redundant-workflow@v1
-        with:
-          EXCLUDE_MERGED: 'true'
       - name: Broken Link Check
         uses: technote-space/broken-link-checker-action@v2

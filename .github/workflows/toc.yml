@@ -2,6 +2,9 @@ on:
   pull_request:
     types: [opened, synchronize, reopened, closed]
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+
 name: TOC Generator
 
 jobs:
@@ -13,11 +16,15 @@ jobs:
     steps:
       - uses: technote-space/load-config-action@v1
         with:
-          CONFIG_FILENAME: workflow-settings.json
-      - uses: technote-space/toc-generator@v2
+          CONFIG_FILENAME: workflow-settings.json, workflow-details.json
+          IGNORE_WARNING: 'true'
+      - uses: technote-space/toc-generator@v4
         with:
           GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           TARGET_BRANCH_PREFIX: ${{ env.BRANCH_PREFIX }}
           FOLDING: ${{ env.TOC_FOLDING }}
           MAX_HEADER_LEVEL: ${{ env.TOC_MAX_HEADER_LEVEL }}
           TOC_TITLE: ${{ env.TOC_TITLE }}
+          CREATE_PR: ${{ env.TOC_CREATE_PR }}
+          TARGET_PATHS: ${{ env.TOC_TARGET_PATHS }}
+          FOOTER: ${{ env.TOC_FOOTER }}
