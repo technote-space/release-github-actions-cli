@@ -1,6 +1,6 @@
 {
   "name": "@technote-space/release-github-actions-cli",
-  "version": "1.8.7",
+  "version": "1.8.8",
   "description": "Release GitHub Actions Cli",
   "keywords": [
     "github",
@@ -31,14 +31,14 @@
   "scripts": {
     "build": "yarn install && tsc && yarn install --production",
     "cover": "jest --coverage",
+    "postinstall": "[ -n \"$CI\" ] || [ ! -f node_modules/.bin/husky ] || husky install",
     "lint": "eslint 'src/**/*.ts' '__tests__/**/*.ts' --cache",
     "lint:fix": "eslint --fix 'src/**/*.ts' '__tests__/**/*.ts'",
+    "prepublishOnly": "[ -n \"$CI\" ] || [ ! -f node_modules/.bin/pinst ] || pinst --disable",
+    "postpublish": "[ -n \"$CI\" ] || [ ! -f node_modules/.bin/pinst ] || pinst --enable",
     "release": "./bin/release-ga",
     "test": "yarn lint && yarn cover",
-    "update": "npm_config_yes=true npx npm-check-updates -u --timeout 100000 && yarn install && yarn upgrade && yarn audit",
-    "postinstall": "[ -n \"$CI\" ] || [ ! -f node_modules/.bin/husky ] || husky install",
-    "prepublishOnly": "[ -n \"$CI\" ] || [ ! -f node_modules/.bin/pinst ] || pinst --disable",
-    "postpublish": "[ -n \"$CI\" ] || [ ! -f node_modules/.bin/pinst ] || pinst --enable"
+    "update": "npm_config_yes=true npx npm-check-updates -u --timeout 100000 && yarn install && yarn upgrade && yarn audit"
   },
   "dependencies": {
     "@technote-space/github-action-helper": "^5.2.23",
