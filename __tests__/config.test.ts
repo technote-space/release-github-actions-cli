@@ -1,8 +1,8 @@
 /* eslint-disable no-magic-numbers */
+import { resolve } from 'path';
+import { Misc } from '@technote-space/release-github-actions';
 import { beforeEach, describe, expect, it } from 'vitest';
-import {resolve} from 'path';
-import {Misc} from '@technote-space/release-github-actions';
-import {normalizeConfigKey, normalizeConfigKeys, getActionDefaultInputs, getConfig} from '../src/config';
+import { normalizeConfigKey, normalizeConfigKeys, getActionDefaultInputs, getConfig } from '../src/config';
 
 const fixturesDir = resolve(__dirname, 'fixtures');
 beforeEach(() => {

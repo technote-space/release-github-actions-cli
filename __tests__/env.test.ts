@@ -1,9 +1,9 @@
 /* eslint-disable no-magic-numbers */
+import { resolve } from 'path';
+import { testEnv } from '@technote-space/github-action-test-helper';
+import { Misc } from '@technote-space/release-github-actions';
 import { beforeEach, describe, expect, it } from 'vitest';
-import {resolve} from 'path';
-import {testEnv} from '@technote-space/github-action-test-helper';
-import {Misc} from '@technote-space/release-github-actions';
-import {setEnv, loadTokenFromEnv} from '../src/env';
+import { setEnv, loadTokenFromEnv } from '../src/env';
 
 const fixturesDir = resolve(__dirname, 'fixtures');
 beforeEach(() => {

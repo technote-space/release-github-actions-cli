@@ -1,12 +1,12 @@
-import type {Context} from '@actions/github/lib/context';
-import type {Config, ContextArgs} from './types';
+import type { Config, ContextArgs } from './types';
+import type { Context } from '@actions/github/lib/context';
 import fs from 'fs';
-import {resolve} from 'path';
-import {GitHelper} from '@technote-space/github-action-helper';
-import {Logger} from '@technote-space/github-action-log-helper';
+import { resolve } from 'path';
+import { GitHelper } from '@technote-space/github-action-helper';
+import { Logger } from '@technote-space/github-action-log-helper';
 
 export const getRepository = (dir: string): { owner: string; repo: string } | never => {
-  const json = JSON.parse(fs.readFileSync(resolve(dir, 'package.json'), {encoding: 'utf8'}));
+  const json = JSON.parse(fs.readFileSync(resolve(dir, 'package.json'), { encoding: 'utf8' }));
   const url  = json ? json.repository?.url ?? json.homepage ?? json.bugs?.url : '';
   if (!url) {
     throw new Error('Invalid package file.');
@@ -31,10 +31,10 @@ export const getContextArgs = async(helper: GitHelper, tagName: string | undefin
 
     const version = await helper.getNewPatchVersion(dir);
     (new Logger()).info('version: %s', version);
-    return {...config, tagName: config.inputs.TEST_TAG_PREFIX + version, branch};
+    return { ...config, tagName: config.inputs.TEST_TAG_PREFIX + version, branch };
   }
 
-  return {...config, tagName, branch};
+  return { ...config, tagName, branch };
 };
 
 export const getContext = (args: ContextArgs): Context => ({

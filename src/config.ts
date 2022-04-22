@@ -1,9 +1,9 @@
-import type {Config} from './types';
-import {cosmiconfigSync} from 'cosmiconfig';
+import type { Config } from './types';
 import fs from 'fs';
-import {resolve} from 'path';
-import {load} from 'js-yaml';
-import {getRepository} from './misc';
+import { resolve } from 'path';
+import { cosmiconfigSync } from 'cosmiconfig';
+import { load } from 'js-yaml';
+import { getRepository } from './misc';
 
 export const normalizeConfigKey = (key: string): string => key.replace(/[-\s]+/g, '_').toUpperCase();
 
@@ -25,10 +25,10 @@ export const getActionDefaultInputs = (): { [key: string]: string } => {
 };
 
 export const getConfig = (dir: string, isTest: boolean | undefined): Config | never => {
-  const explorer      = cosmiconfigSync('releasega');
-  const {config = {}} = explorer.search(dir) || {};
+  const explorer        = cosmiconfigSync('releasega');
+  const { config = {} } = explorer.search(dir) || {};
   if (!('owner' in config) || !('repo' in config)) {
-    const {owner, repo} = getRepository(dir);
+    const { owner, repo } = getRepository(dir);
     if ('OWNER' in config) {
       config.owner = config.OWNER;
       delete config.OWNER;

@@ -1,8 +1,8 @@
-import {Command} from 'commander';
-import {getContextArgs, getGitHelper} from './misc';
-import {isValidContext, prepare, commit, push} from './wrapper';
-import {getConfig} from './config';
-import {setEnv, loadTokenFromEnv} from './env';
+import { Command } from 'commander';
+import { getConfig } from './config';
+import { setEnv, loadTokenFromEnv } from './env';
+import { getContextArgs, getGitHelper } from './misc';
+import { isValidContext, prepare, commit, push } from './wrapper';
 
 export const execute = async(): Promise<void> => {
   const program = new Command();
