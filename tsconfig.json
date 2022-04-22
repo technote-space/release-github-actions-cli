@@ -72,6 +72,6 @@
     "node_modules",
     "__tests__",
     "lib/**/*",
-    "jest.setup.ts"
+    "vite.config.ts"
   ]
 }

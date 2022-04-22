@@ -1,12 +1,12 @@
 import type {Context} from '@actions/github/lib/context';
 import type {Config, ContextArgs} from './types';
-import {readFileSync} from 'fs';
+import fs from 'fs';
 import {resolve} from 'path';
 import {GitHelper} from '@technote-space/github-action-helper';
 import {Logger} from '@technote-space/github-action-log-helper';
 
 export const getRepository = (dir: string): { owner: string; repo: string } | never => {
-  const json = JSON.parse(readFileSync(resolve(dir, 'package.json'), {encoding: 'utf8'}));
+  const json = JSON.parse(fs.readFileSync(resolve(dir, 'package.json'), {encoding: 'utf8'}));
   const url  = json ? json.repository?.url ?? json.homepage ?? json.bugs?.url : '';
   if (!url) {
     throw new Error('Invalid package file.');

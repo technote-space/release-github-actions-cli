@@ -1,14 +1,14 @@
 import type {Config} from './types';
 import dotenv from 'dotenv';
-import {existsSync, readFileSync} from 'fs';
+import fs from 'fs';
 import {resolve} from 'path';
 
 export const loadTokenFromEnv = (dir: string): string | undefined => {
-  if (!existsSync(resolve(dir, '.env'))) {
+  if (!fs.existsSync(resolve(dir, '.env'))) {
     return;
   }
 
-  const config = dotenv.parse(readFileSync(resolve(dir, '.env')));
+  const config = dotenv.parse(fs.readFileSync(resolve(dir, '.env')));
   return config.token ?? config.TOKEN;
 };
 

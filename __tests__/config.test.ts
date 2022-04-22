@@ -1,11 +1,12 @@
 /* eslint-disable no-magic-numbers */
+import { beforeEach, describe, expect, it } from 'vitest';
 import {resolve} from 'path';
-import {getParams} from '@technote-space/release-github-actions/lib/utils/misc';
+import {Misc} from '@technote-space/release-github-actions';
 import {normalizeConfigKey, normalizeConfigKeys, getActionDefaultInputs, getConfig} from '../src/config';
 
 const fixturesDir = resolve(__dirname, 'fixtures');
 beforeEach(() => {
-  getParams.clear();
+  Misc.getParams.clear();
 });
 
 describe('normalizeConfigKey', () => {

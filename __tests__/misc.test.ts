@@ -1,13 +1,14 @@
 /* eslint-disable no-magic-numbers */
+import { beforeEach, describe, expect, it } from 'vitest';
 import {resolve} from 'path';
 import {testEnv, testFs, setChildProcessParams} from '@technote-space/github-action-test-helper';
-import {getParams} from '@technote-space/release-github-actions/lib/utils/misc';
+import {Misc} from '@technote-space/release-github-actions';
 import {getRepository, getContext, getContextArgs, getGitHelper} from '../src/misc';
 
 const fixturesDir = resolve(__dirname, 'fixtures');
 testFs(true);
 beforeEach(() => {
-  getParams.clear();
+  Misc.getParams.clear();
 });
 
 describe('getRepository', () => {
