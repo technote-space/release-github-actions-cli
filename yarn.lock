@@ -9,7 +9,7 @@
   dependencies:
     "@actions/http-client" "^1.0.11"
 
-"@actions/github@^5.0.0", "@actions/github@^5.0.1":
+"@actions/github@^5.0.1":
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/@actions/github/-/github-5.0.1.tgz#5fdbe371d9a592038668be95d12421361585fba1"
   integrity sha512-JZGyPM9ektb8NVTTI/2gfJ9DL7Rk98tQ7OVyTlgTuaQroariRBsOnzjy0I2EarX4xUZpK88YyO503fhmjFdyAg==
@@ -826,47 +826,31 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@technote-space/filter-github-action@^0.5.54":
-  version "0.5.62"
-  resolved "https://registry.yarnpkg.com/@technote-space/filter-github-action/-/filter-github-action-0.5.62.tgz#7fe276130dcf445e00d7aa94ab0f1773dc7ab3f0"
-  integrity sha512-20FKkwcS1DAtTJw/W4dilwySoDa1+U8zEV49eN/NXUYKnvkJ/A2b7wckeqo9BA2ywKbXnonMXneRxX1ckQAYgw==
-  dependencies:
-    "@actions/core" "^1.6.0"
-    "@actions/github" "^5.0.0"
-
-"@technote-space/github-action-helper@^5.2.27", "@technote-space/github-action-helper@^5.3.4":
-  version "5.3.4"
-  resolved "https://registry.yarnpkg.com/@technote-space/github-action-helper/-/github-action-helper-5.3.4.tgz#498b193e50d50b521acad6e895ad39ae2962bd8a"
-  integrity sha512-krNOPcudU1Wq17VkHr5IRaEcD430a8JykGKiws/AsLXyJfPCQJ9+Db5ezbAD7qW78jSV8GSuKrI/DSFTbc8AWQ==
+"@technote-space/github-action-helper@^5.3.5":
+  version "5.3.5"
+  resolved "https://registry.yarnpkg.com/@technote-space/github-action-helper/-/github-action-helper-5.3.5.tgz#3de244bac95515200ed741de3dcf893e8399c5b4"
+  integrity sha512-MPWULvZslBnZi0+cdXIE9sOMojC+2VD+Awa4UjZ5KkEpfJx7UX9kNEoVHJsoeP6Ovz78S50kIsCMY8Vpokdz5A==
   dependencies:
     "@actions/core" "^1.6.0"
     "@actions/github" "^5.0.1"
     "@octokit/openapi-types" "^11.2.0"
     "@octokit/plugin-rest-endpoint-methods" "^5.13.0"
-    "@technote-space/github-action-log-helper" "^0.2.3"
+    "@technote-space/github-action-log-helper" "^0.2.4"
     shell-escape "^0.2.0"
     sprintf-js "^1.1.2"
 
-"@technote-space/github-action-log-helper@^0.1.46":
-  version "0.1.52"
-  resolved "https://registry.yarnpkg.com/@technote-space/github-action-log-helper/-/github-action-log-helper-0.1.52.tgz#59ee09ed4d4919bf640ec199d7bcd0887e2d3cda"
-  integrity sha512-UembBeUuTmRQgzIO6d6E4d40EbzF4HhUTEomuns+o8i0zg4WzpwqIgrx1e+nFik+PcAALiIY1ceCDyYIWmUdCA==
+"@technote-space/github-action-log-helper@^0.2.4":
+  version "0.2.4"
+  resolved "https://registry.yarnpkg.com/@technote-space/github-action-log-helper/-/github-action-log-helper-0.2.4.tgz#b6f17f2b4e48098951fcfede7783074de696948e"
+  integrity sha512-KmuMvNMldXfN3Yo1qJ1NOUi11L/YRzxFfGQE2C5Q2K81ZF0O0un34xkChQJafD73yiEW4Nqtn7S7zCFl4TnFHw==
   dependencies:
     "@actions/core" "^1.6.0"
     sprintf-js "^1.1.2"
 
-"@technote-space/github-action-log-helper@^0.2.3":
-  version "0.2.3"
-  resolved "https://registry.yarnpkg.com/@technote-space/github-action-log-helper/-/github-action-log-helper-0.2.3.tgz#3c5dd037284e714daed75fb4986c802652b46292"
-  integrity sha512-U0MsgYEugAaT/7IMs9+SneRBqisvN/fCn1DYwFVSt9jwpnbf5r08asl2gCvfn40/TbI3dU0fkDUePMxTd8mObg==
-  dependencies:
-    "@actions/core" "^1.6.0"
-    sprintf-js "^1.1.2"
-
-"@technote-space/github-action-test-helper@^0.9.4":
-  version "0.9.4"
-  resolved "https://registry.yarnpkg.com/@technote-space/github-action-test-helper/-/github-action-test-helper-0.9.4.tgz#8556c6eda3cac00d3822421ce555d6e0243ad69c"
-  integrity sha512-g52/SNKL6ilSCgvtNjmZTJAePFwk6o6TI34B7CaoZMOQNzRUCH37NFL590aIow2LjlezMdvOXg2WLXirEgeX+Q==
+"@technote-space/github-action-test-helper@^0.9.5":
+  version "0.9.5"
+  resolved "https://registry.yarnpkg.com/@technote-space/github-action-test-helper/-/github-action-test-helper-0.9.5.tgz#2b014283629c8d0c48a1321300c46d549f9003fd"
+  integrity sha512-0X7OfB4n92nUPzsLeThd13Z86pZIXWfm/hXHcxleRsReb1ClSBAU59R+XP8A9tVJSenG+LW6t8m40aMdtQZNUQ==
   dependencies:
     "@actions/core" "^1.6.0"
     "@actions/github" "^5.0.1"
@@ -874,17 +858,10 @@
     js-yaml "^4.1.0"
     vitest "^0.9.3"
 
-"@technote-space/release-github-actions@^7.1.1":
-  version "7.1.1"
-  resolved "https://registry.yarnpkg.com/@technote-space/release-github-actions/-/release-github-actions-7.1.1.tgz#5bccb67aa826faf4e4827a0a1854201f6b38dc71"
-  integrity sha512-1zhNKVkqkQZMj+zoPcZdaZmNHzR71Lij4AF6GrjNgYWN2nA1LEFuiPK90oa4pI2VrA6BpHny02aCrTnuvBzRZA==
-  dependencies:
-    "@actions/core" "^1.6.0"
-    "@actions/github" "^5.0.0"
-    "@technote-space/filter-github-action" "^0.5.54"
-    "@technote-space/github-action-helper" "^5.2.27"
-    "@technote-space/github-action-log-helper" "^0.1.46"
-    memize "^1.1.0"
+"@technote-space/release-github-actions@^7.2.0":
+  version "7.2.0"
+  resolved "https://registry.yarnpkg.com/@technote-space/release-github-actions/-/release-github-actions-7.2.0.tgz#1278b8d8bcf7bbf5669767a1e774bd86b8963efe"
+  integrity sha512-seb7T47CcuNogs1sc5L6twZyU7Ub824hnHlRfBsqfmEmRzGZ42eK5rIuN+9zHR1cdx8N97Y/BysQvqHW/Ijigw==
 
 "@tootallnate/once@1":
   version "1.1.2"
@@ -1801,9 +1778,9 @@ eastasianwidth@^0.2.0:
   integrity sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==
 
 electron-to-chromium@^1.4.84:
-  version "1.4.117"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.117.tgz#829d747deb9faa653cab72764a891ef523ba7413"
-  integrity sha512-ypZHxY+Sf/PXu7LVN+xoeanyisnJeSOy8Ki439L/oLueZb4c72FI45zXcK3gPpmTwyufh9m6NnbMLXnJh/0Fxg==
+  version "1.4.118"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.118.tgz#2d917c71712dac9652cc01af46c7d0bd51552974"
+  integrity sha512-maZIKjnYDvF7Fs35nvVcyr44UcKNwybr93Oba2n3HkKDFAtk0svERkLN/HyczJDS3Fo4wU9th9fUQd09ZLtj1w==
 
 emittery@^0.8.1:
   version "0.8.1"
@@ -3267,11 +3244,6 @@ map-obj@^4.0.0:
   resolved "https://registry.yarnpkg.com/map-obj/-/map-obj-4.3.0.tgz#9304f906e93faae70880da102a9f1df0ea8bb05a"
   integrity sha512-hdN1wVrZbb29eBGiGjJbeP8JbKjq1urkHJ/LIP/NY48MZ1QVXUsQBV1G1zvYFHn1XE06cwjBsOI2K3Ulnj1YXQ==
 
-memize@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/memize/-/memize-1.1.0.tgz#4a5a684ac6992a13b1299043f3e49b1af6a0b0d3"
-  integrity sha512-K4FcPETOMTwe7KL2LK0orMhpOmWD2wRGwWWpbZy0fyArwsyIKR8YJVz8+efBAh3BO4zPqlSICu4vsLTRRqtFAg==
-
 meow@^8.0.0:
   version "8.1.2"
   resolved "https://registry.yarnpkg.com/meow/-/meow-8.1.2.tgz#bcbe45bda0ee1729d350c03cffc8395a36c4e897"
@@ -4213,9 +4185,9 @@ tslib@^1.8.1:
   integrity sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==
 
 tslib@^2.1.0:
-  version "2.3.1"
-  resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.3.1.tgz#e8a335add5ceae51aa261d32a490158ef042ef01"
-  integrity sha512-77EbyPPpMz+FRFRuAFlWMtmgUWGe9UOG2Z25NqCwiIjRhOf5iKGuzSe5P2w1laq+FkRy4p+PCuVkJSGkzTEKVw==
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.4.0.tgz#7cecaa7f073ce680a05847aa77be941098f36dc3"
+  integrity sha512-d6xOpEDfsi2CZVlPQzGeux8XMwLT9hssAsaPYExaQMuYskwb+x1x7J371tWlbBdWHroy99KnVB6qIkUbs5X3UQ==
 
 tsutils@^3.21.0:
   version "3.21.0"

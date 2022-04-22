@@ -41,9 +41,9 @@
     "update": "npm_config_yes=true npx npm-check-updates -u --timeout 100000 && yarn install && yarn upgrade && yarn audit"
   },
   "dependencies": {
-    "@technote-space/github-action-helper": "^5.3.4",
-    "@technote-space/github-action-log-helper": "^0.2.3",
-    "@technote-space/release-github-actions": "^7.1.1",
+    "@technote-space/github-action-helper": "^5.3.5",
+    "@technote-space/github-action-log-helper": "^0.2.4",
+    "@technote-space/release-github-actions": "^7.2.0",
     "commander": "^9.2.0",
     "cosmiconfig": "^7.0.1",
     "dotenv": "^16.0.0",
@@ -52,7 +52,7 @@
   "devDependencies": {
     "@commitlint/cli": "^16.2.3",
     "@commitlint/config-conventional": "^16.2.1",
-    "@technote-space/github-action-test-helper": "^0.9.4",
+    "@technote-space/github-action-test-helper": "^0.9.5",
     "@types/jest": "^27.4.1",
     "@types/node": "^17.0.25",
     "@typescript-eslint/eslint-plugin": "^5.20.0",
