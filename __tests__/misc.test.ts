@@ -1,13 +1,14 @@
 /* eslint-disable no-magic-numbers */
-import {resolve} from 'path';
-import {testEnv, testFs, setChildProcessParams} from '@technote-space/github-action-test-helper';
-import {getParams} from '@technote-space/release-github-actions/lib/utils/misc';
-import {getRepository, getContext, getContextArgs, getGitHelper} from '../src/misc';
+import { resolve } from 'path';
+import { testEnv, testFs, setChildProcessParams } from '@technote-space/github-action-test-helper';
+import { Misc } from '@technote-space/release-github-actions';
+import { beforeEach, describe, expect, it } from 'vitest';
+import { getRepository, getContext, getContextArgs, getGitHelper } from '../src/misc';
 
 const fixturesDir = resolve(__dirname, 'fixtures');
 testFs(true);
 beforeEach(() => {
-  getParams.clear();
+  Misc.getParams.clear();
 });
 
 describe('getRepository', () => {
@@ -24,7 +25,7 @@ describe('getRepository', () => {
   });
 
   it('should get repository info', () => {
-    const {owner, repo} = getRepository(resolve(fixturesDir, 'test7'));
+    const { owner, repo } = getRepository(resolve(fixturesDir, 'test7'));
     expect(owner).toBe('test-owner');
     expect(repo).toBe('test-repo');
   });

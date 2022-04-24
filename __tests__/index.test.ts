@@ -1,4 +1,5 @@
 /* eslint-disable no-magic-numbers */
+import { Logger } from '@technote-space/github-action-log-helper';
 import {
   testEnv,
   spyOnStdout,
@@ -9,15 +10,15 @@ import {
   testFs,
   setChildProcessParams,
 } from '@technote-space/github-action-test-helper';
-import {Logger} from '@technote-space/github-action-log-helper';
-import {getParams} from '@technote-space/release-github-actions/lib/utils/misc';
-import {execute} from '../src';
+import { Misc } from '@technote-space/release-github-actions';
+import { afterEach, beforeEach, describe, expect, it } from 'vitest';
+import { execute } from '../src';
 
 const setExists = testFs(false);
 const saveArgv  = process.argv;
 beforeEach(() => {
   Logger.resetForTesting();
-  getParams.clear();
+  Misc.getParams.clear();
 });
 
 describe('execute', () => {
