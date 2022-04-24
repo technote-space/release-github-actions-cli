@@ -7,8 +7,7 @@
       "es2020"
     ],
     "noPropertyAccessFromIndexSignature": false,
-    "noImplicitAny": false,
-    "emitDeclarationOnly": true
+    "noImplicitAny": false
   },
   "include": [
     "src"
