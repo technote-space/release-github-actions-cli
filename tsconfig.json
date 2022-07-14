@@ -6,6 +6,7 @@
     "lib": [
       "es2020"
     ],
+    "moduleResolution": "node",
     "noPropertyAccessFromIndexSignature": false,
     "noImplicitAny": false
   },
